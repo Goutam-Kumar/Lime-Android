@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.otp.OtpActivity"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/white"
+        android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar"
+        tools:ignore="MissingConstraints"
+        app:contentInsetStart="0dp"
+        app:contentInsetEnd="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/img_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back_black"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/spacing_10_dp"
+                android:contentDescription="@string/back" />
+
+            <com.lime.android.ui.customview.robototextview.RobotoTextView
+                android:id="@+id/txt_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/back"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dim_20_sp"
+                android:layout_toEndOf="@+id/img_back"
+                android:layout_centerVertical="true"
+                app:tv_fontName="lato_thin.txt" />
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_gravity="center">
+
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verification_code"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dim_20_sp"
+            android:layout_gravity="center_horizontal"
+            app:tv_fontName="lato_bold.ttf"/>
+
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verify_code_desc"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dim_15_sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/spacing_10_dp"
+            android:gravity="center_horizontal"
+            app:tv_fontName="lato_regular.ttf"/>
+
+        <com.mukesh.OtpView
+            android:id="@+id/otp_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:itemBackground="@drawable/edit_text_bg"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            android:textSize="@dimen/dim_30_sp"
+            android:layout_marginTop="@dimen/dim_30_dp"
+            app:hideLineWhenFilled="true"
+            app:itemCount="4"
+            app:itemSpacing="6dp"
+            app:state_filled="true"
+            app:viewType="rectangle"
+            app:lineColor="@android:color/transparent"
+            app:lineWidth="0dp"/>
+
+        <com.lime.android.ui.customview.robotobutton.RobotoButton
+            android:id="@+id/btn_continue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_45_dp"
+            android:background="@drawable/primary_button_selector"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:text="@string/continu"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dim_15_sp"
+            android:outlineProvider="bounds"
+            android:elevation="@dimen/spacing_5_dp"
+            android:translationZ="@dimen/spacing_5_dp"
+            android:stateListAnimator="@null"
+            android:layout_margin="@dimen/dim_20_dp"
+            app:bt_fontName="lato_regular.ttf" />
+
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resend_code"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dim_15_sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            app:tv_fontName="lato_bold.ttf"/>
+    </LinearLayout>
+
+</LinearLayout>

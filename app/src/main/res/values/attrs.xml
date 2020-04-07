@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="DotsLoaderBaseView">
+        <attr name="loader_defaultColor" format="color" />
+        <attr name="loader_selectedColor" format="color" />
+        <attr name="loader_circleRadius" format="dimension" />
+        <attr name="loader_animDur" format="integer" />
+        <attr name="loader_showRunningShadow" format="boolean" />
+        <attr name="loader_firstShadowColor" format="color" />
+        <attr name="loader_secondShadowColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="DotLoader">
+        <attr name="dotloader_dotsColor" format="color" />
+        <attr name="dotloader_colorsArray" format="reference" />
+        <attr name="dotloader_useMultipleColors" format="boolean" />
+        <attr name="dotloader_dotsRadius" format="dimension" />
+        <attr name="dotloader_bigCircleRadius" format="dimension" />
+        <attr name="dotloader_animDur" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="RobotoTextView">
+        <attr name="tv_fontName" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RobotoEditText">
+        <attr name="et_fontName" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="RobotoButton">
+        <attr name="bt_fontName" format="string" />
+    </declare-styleable>
+</resources>

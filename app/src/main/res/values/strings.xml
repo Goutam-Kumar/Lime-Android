@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Lime</string>
+    <string name="please_wait">Please wait!</string>
+    <string name="cancel_service_call">Cancel service call</string>
+    <string name="lets_start">Let\'s Start <b>With Us</b></string>
+    <string name="mobile">Mobile No.</string>
+    <string name="login">Login</string>
+    <string name="dont_have_acc">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="register_partner">Register as Partner</string>
+    <string name="back">Back</string>
+    <string name="verification_code">Verification Code</string>
+    <string name="verify_code_desc">Verification code has been sent to your\nmobile number.Please wait\nwe are verifying you.</string>
+    <string name="continu">Continue</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="menu">menu</string>
+    <string name="dashboard">Dashboard</string>
+</resources>
