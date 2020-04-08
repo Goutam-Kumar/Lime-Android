@@ -1,6 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.65">
+        <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_10_dp"
+            android:layout_marginStart="@dimen/dim_20_dp"
+            android:layout_marginEnd="@dimen/dim_20_dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardElevation="@dimen/spacing_10_dp"
+            app:cardCornerRadius="@dimen/dim_3_dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/lin_pickup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_10_dp">
+                    <ImageView
+                        android:layout_width="@dimen/dim_30_dp"
+                        android:layout_height="@dimen/dim_30_dp"
+                        android:src="@drawable/ic_pickup_location_icon"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical">
+                        <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pick_up"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dim_15_sp"
+                            app:tv_fontName="lato_bold.ttf"/>
+                        <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:id="@+id/tv_pickup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/select_pickup"
+                            android:textColor="@color/icon_tint_color"
+                            android:textSize="@dimen/dim_13_sp"
+                            app:tv_fontName="lato_regular.ttf"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/icon_tint_color"/>
+                <LinearLayout
+                    android:id="@+id/lin_drop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_10_dp">
+                    <ImageView
+                        android:layout_width="@dimen/dim_30_dp"
+                        android:layout_height="@dimen/dim_30_dp"
+                        android:src="@drawable/ic_location_icon"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical">
+                        <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/drop_in"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dim_15_sp"
+                            app:tv_fontName="lato_bold.ttf"/>
+                        <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:id="@+id/tv_drop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/select_drop"
+                            android:textColor="@color/icon_tint_color"
+                            android:textSize="@dimen/dim_13_sp"
+                            app:tv_fontName="lato_regular.ttf"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.35"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_vehicle_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_10_dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.lime.android.ui.customview.robotobutton.RobotoButton
+            android:id="@+id/btn_continue"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_45_dp"
+            android:background="@drawable/primary_button_selector"
+            android:textAllCaps="true"
+            android:gravity="center"
+            android:text="@string/continu"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dim_15_sp"
+            android:outlineProvider="bounds"
+            android:elevation="@dimen/spacing_5_dp"
+            android:translationZ="@dimen/spacing_5_dp"
+            android:stateListAnimator="@null"
+            android:layout_margin="@dimen/dim_20_dp"
+            android:layout_marginTop="@dimen/spacing_10_dp"
+            app:bt_fontName="lato_regular.ttf" />
+
+    </LinearLayout>
 
 </LinearLayout>

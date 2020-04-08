@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Lime</string>
+
+    <!--Google place search and map api key-->
+    <string name="api_key">AIzaSyBkj3ZTizTUmX5iyD-_hmjMsa63Dj7vnKk</string>
+
     <string name="please_wait">Please wait!</string>
     <string name="cancel_service_call">Cancel service call</string>
     <string name="lets_start">Let\'s Start <b>With Us</b></string>
@@ -15,4 +19,13 @@
     <string name="resend_code">Resend Code</string>
     <string name="menu">menu</string>
     <string name="dashboard">Dashboard</string>
+    <string name="pick_up">Pickup Location</string>
+    <string name="select_pickup">Select Pickup Location</string>
+    <string name="drop_in">Drop In Location</string>
+    <string name="select_drop">Select Drop Location</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="proceed">Proceed</string>
+    <string name="list_of_truck">List of Truck</string>
+    <string name="choose_truck">Choose Truck</string>
+    <string name="rates">Rates</string>
 </resources>

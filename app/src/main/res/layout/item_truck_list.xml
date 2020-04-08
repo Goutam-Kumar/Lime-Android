@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dim_45_dp"
+    android:layout_margin="@dimen/spacing_5_dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.75"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/edit_text_bg">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_user_dp"
+            android:layout_width="@dimen/dim_35_dp"
+            android:layout_height="@dimen/dim_35_dp"
+            android:layout_marginLeft="@dimen/spacing_5_dp"
+            android:layout_marginRight="@dimen/spacing_5_dp"
+            android:src="@mipmap/ic_launcher"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <com.lime.android.ui.customview.robototextview.RobotoTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="John Vandella"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dim_15_sp"
+                android:layout_gravity="center_horizontal"
+                app:tv_fontName="lato_bold.ttf"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_5_dp"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.lime.android.ui.customview.robototextview.RobotoTextView
+                    android:id="@+id/tv_truck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_truck"
+                    android:text="Mini Truck"
+                    android:textColor="@color/icon_tint_color"
+                    android:textSize="@dimen/dim_10_sp"
+                    android:layout_gravity="center_vertical"
+                    app:tv_fontName="lato_regular.ttf"/>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_5_dp"
+                    android:background="@color/icon_tint_color"/>
+
+                <com.lime.android.ui.customview.robototextview.RobotoTextView
+                    android:id="@+id/tv_weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_truck_weight"
+                    android:text="100 Ton"
+                    android:textColor="@color/icon_tint_color"
+                    android:textSize="@dimen/dim_10_sp"
+                    android:layout_gravity="center_vertical"
+                    app:tv_fontName="lato_regular.ttf"/>
+
+                <View
+                    android:layout_width="0.5dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/spacing_5_dp"
+                    android:background="@color/icon_tint_color"/>
+
+                <com.lime.android.ui.customview.robototextview.RobotoTextView
+                    android:id="@+id/tv_tyre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_truck_tyre"
+                    android:text="10 Tyre"
+                    android:textColor="@color/icon_tint_color"
+                    android:textSize="@dimen/dim_10_sp"
+                    android:layout_gravity="center_vertical"
+                    app:tv_fontName="lato_regular.ttf"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.25"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/spacing_10_dp">
+
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/primary_button_selector"
+            android:text="MW 400"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dim_15_sp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            app:tv_fontName="lato_regular.ttf"/>
+    </LinearLayout>
+
+</LinearLayout>

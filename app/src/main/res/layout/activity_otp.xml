@@ -40,7 +40,7 @@
                 android:textSize="@dimen/dim_20_sp"
                 android:layout_toEndOf="@+id/img_back"
                 android:layout_centerVertical="true"
-                app:tv_fontName="lato_thin.txt" />
+                app:tv_fontName="lato_regular.ttf" />
 
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
@@ -95,17 +95,17 @@
             android:id="@+id/btn_continue"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dim_45_dp"
+            android:layout_margin="@dimen/dim_20_dp"
             android:background="@drawable/primary_button_selector"
-            android:textAllCaps="true"
+            android:elevation="@dimen/spacing_5_dp"
             android:gravity="center"
+            android:outlineProvider="bounds"
+            android:stateListAnimator="@null"
             android:text="@string/continu"
+            android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="@dimen/dim_15_sp"
-            android:outlineProvider="bounds"
-            android:elevation="@dimen/spacing_5_dp"
             android:translationZ="@dimen/spacing_5_dp"
-            android:stateListAnimator="@null"
-            android:layout_margin="@dimen/dim_20_dp"
             app:bt_fontName="lato_regular.ttf" />
 
         <com.lime.android.ui.customview.robototextview.RobotoTextView

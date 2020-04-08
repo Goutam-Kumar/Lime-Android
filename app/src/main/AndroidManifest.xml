@@ -3,17 +3,30 @@
     xmlns:dist="http://schemas.android.com/apk/distribution"
     package="com.lime.android">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <dist:module dist:instant="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".screens.otp.OtpActivity"></activity>
-        <activity android:name=".screens.login.LoginActivity" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
         <activity
             android:name=".screens.splash.SplashActivity"
             android:screenOrientation="portrait">
@@ -24,6 +37,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".screens.otp.OtpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".screens.login.LoginActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".screens.dashboard.MainActivity"
             android:screenOrientation="portrait" />

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:id="@+id/lin_vehicle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/vehicle_image"
+        android:layout_width="@dimen/dim_70_dp"
+        android:layout_height="@dimen/dim_70_dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@mipmap/ic_launcher"
+        app:civ_border_width="1dp"
+        app:civ_border_color="#000000" />
+
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:id="@+id/tv_vehicle_name"
+        android:layout_width="@dimen/dim_70_dp"
+        android:layout_height="wrap_content"
+        android:text="Mini Truck"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dim_10_sp"
+        android:gravity="center_horizontal"
+        android:paddingLeft="@dimen/spacing_5_dp"
+        android:paddingRight="@dimen/spacing_5_dp"
+        android:paddingBottom="@dimen/dim_2_dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/rounded_text_view_bg_selector"
+        android:layout_marginTop="@dimen/spacing_10_dp"
+        app:tv_fontName="lato_regular.ttf"/>
+
+</LinearLayout>

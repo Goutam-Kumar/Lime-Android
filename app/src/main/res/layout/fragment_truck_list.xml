@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.88"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dim_30_dp"
+        android:paddingLeft="@dimen/dim_20_dp"
+        android:paddingRight="@dimen/dim_20_dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <com.lime.android.ui.customview.robototextview.RobotoTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.75"
+                android:text="@string/choose_truck"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dim_15_sp"
+                android:layout_gravity="center_horizontal"
+                app:tv_fontName="lato_bold.ttf"/>
+            <com.lime.android.ui.customview.robototextview.RobotoTextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.25"
+                android:text="@string/rates"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dim_15_sp"
+                android:gravity="center"
+                app:tv_fontName="lato_bold.ttf"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_truck_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.12"
+        android:gravity="center"
+        android:orientation="vertical">
+        <com.lime.android.ui.customview.robotobutton.RobotoButton
+            android:id="@+id/btn_proceed"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_45_dp"
+            android:layout_margin="@dimen/dim_20_dp"
+            android:background="@drawable/primary_button_selector"
+            android:elevation="@dimen/spacing_5_dp"
+            android:gravity="center"
+            android:outlineProvider="bounds"
+            android:stateListAnimator="@null"
+            android:text="@string/proceed"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dim_15_sp"
+            android:translationZ="@dimen/spacing_5_dp"
+            app:bt_fontName="lato_regular.ttf" />
+    </LinearLayout>
+
+</LinearLayout>
