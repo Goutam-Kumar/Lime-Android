@@ -28,4 +28,22 @@
     <string name="list_of_truck">List of Truck</string>
     <string name="choose_truck">Choose Truck</string>
     <string name="rates">Rates</string>
+    <string name="select_pick_date">Select Pickup Date</string>
+    <string name="dd_mm_yy">DD/MM/YY</string>
+    <string name="select_vehicle">Select Vehicle</string>
+    <string name="select_vehicle_type">Select Vehicle Type</string>
+    <string name="select_good_type">Select Goods Type</string>
+    <string name="enter_weight">Enter Weight</string>
+    <string name="weight_ton_kg">Weight (Ton or Kg)</string>
+    <string name="check_fare">Check Fare</string>
+    <string name="bid_now">Bid Now</string>
+    <string name="additional_details">Additional Details</string>
+    <string name="offer_price">Offer Your Price</string>
+    <string name="mw">MW</string>
+    <string name="tnc_offer_bid">It is a long establishment fact that a reader will be distracted by the readable content of a page when looking at its layout</string>
+    <string name="send_bid">Send Bid</string>
+    <string name="bid_amount">Bid Amount</string>
+    <string name="bid_success">Your bid has been placed\nsuccessfully</string>
+    <string name="view_bids">View Bids</string>
+    <string name="bid_conf">Bid Confirmation</string>
 </resources>

@@ -13,10 +13,36 @@
         <action
             android:id="@+id/action_mainFragment_to_truckListFragment"
             app:destination="@id/truckListFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_additionalDetailsFragment"
+            app:destination="@id/additionalDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/truckListFragment"
         android:name="com.lime.android.fragments.trucklist.TruckListFragment"
         android:label="TruckListFragment"
         tools:layout="@layout/fragment_truck_list"/>
+    <fragment
+        android:id="@+id/additionalDetailsFragment"
+        android:name="com.lime.android.fragments.additionaldetails.AdditionalDetailsFragment"
+        android:label="AdditionalDetailsFragment"
+        tools:layout="@layout/fragment_additional_details">
+        <action
+            android:id="@+id/action_additionalDetailsFragment_to_offerBidFragment"
+            app:destination="@id/offerBidFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/offerBidFragment"
+        android:name="com.lime.android.fragments.offerbid.OfferBidFragment"
+        android:label="OfferBidFragment"
+        tools:layout="@layout/fragment_offer_bid">
+        <action
+            android:id="@+id/action_offerBidFragment_to_fragmentBidConfirmation"
+            app:destination="@id/fragmentBidConfirmation" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentBidConfirmation"
+        android:name="com.lime.android.fragments.bidconfirmation.BidConfirmationFragment"
+        android:label="FragmentBidConfirmation"
+        tools:layout="@layout/fragment_bid_confirmation"/>
 </navigation>

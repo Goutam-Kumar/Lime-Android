@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/dim_20_dp">
+
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_pick_date"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dim_15_sp"
+        android:layout_marginTop="@dimen/spacing_10_dp"
+        android:layout_gravity="center_horizontal"
+        app:tv_fontName="lato_bold.ttf"/>
+
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:id="@+id/tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_45_dp"
+        android:background="@drawable/edit_text_bg"
+        android:hint="@string/dd_mm_yy"
+        android:textColorHint="@color/icon_tint_color"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/dim_15_sp"
+        android:textColor="@color/colorPrimary"
+        android:drawablePadding="@dimen/spacing_5_dp"
+        android:drawableStart="@drawable/ic_calendar_icon"
+        android:layout_marginTop="@dimen/spacing_5_dp"
+        android:paddingStart="@dimen/spacing_10_dp"
+        app:et_fontName="lato_regular.ttf"/>
+
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_vehicle_type"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dim_15_sp"
+        android:layout_marginTop="@dimen/spacing_10_dp"
+        android:layout_gravity="center_horizontal"
+        app:tv_fontName="lato_bold.ttf"/>
+
+    <RelativeLayout
+        android:id="@+id/rel_vehicle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_45_dp"
+        android:layout_marginTop="@dimen/spacing_5_dp"
+        android:orientation="vertical">
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:id="@+id/tv_vehicle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_45_dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="@string/select_vehicle"
+            android:textColorHint="@color/icon_tint_color"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/dim_15_sp"
+            android:textColor="@color/colorPrimary"
+            android:drawablePadding="@dimen/spacing_5_dp"
+            android:drawableStart="@drawable/ic_truck_large_icon"
+            android:drawableEnd="@drawable/ic_arrow_down_icon"
+            android:paddingStart="@dimen/spacing_10_dp"
+            android:paddingEnd="@dimen/dim_15_dp"
+            app:et_fontName="lato_regular.ttf"/>
+
+        <Spinner
+            android:id="@+id/spinner_vehicle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_45_dp"
+            android:visibility="invisible"/>
+    </RelativeLayout>
+
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/select_good_type"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dim_15_sp"
+        android:layout_marginTop="@dimen/spacing_10_dp"
+        android:layout_gravity="center_horizontal"
+        app:tv_fontName="lato_bold.ttf"/>
+
+    <RelativeLayout
+        android:id="@+id/rel_goods"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_45_dp"
+        android:layout_marginTop="@dimen/spacing_5_dp"
+        android:orientation="vertical">
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:id="@+id/tv_goods"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_45_dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="@string/select_good_type"
+            android:textColorHint="@color/icon_tint_color"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/dim_15_sp"
+            android:textColor="@color/colorPrimary"
+            android:drawablePadding="@dimen/spacing_5_dp"
+            android:drawableEnd="@drawable/ic_arrow_down_icon"
+            android:paddingLeft="@dimen/dim_15_dp"
+            android:paddingEnd="@dimen/dim_15_dp"
+            app:et_fontName="lato_regular.ttf"/>
+
+        <Spinner
+            android:id="@+id/spinner_goods"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dim_45_dp"
+            android:visibility="invisible"/>
+    </RelativeLayout>
+
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_weight"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/dim_15_sp"
+        android:layout_marginTop="@dimen/spacing_10_dp"
+        android:layout_gravity="center_horizontal"
+        app:tv_fontName="lato_bold.ttf"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_45_dp"
+        android:orientation="horizontal">
+
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:layout_width="0dp"
+            android:layout_weight="0.75"
+            android:layout_height="@dimen/dim_45_dp"
+            android:background="@drawable/edit_text_bg"
+            android:hint="@string/weight_ton_kg"
+            android:textColorHint="@color/icon_tint_color"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/dim_15_sp"
+            android:textColor="@color/colorPrimary"
+            android:drawablePadding="@dimen/spacing_5_dp"
+            android:paddingLeft="@dimen/dim_15_dp"
+            app:et_fontName="lato_regular.ttf"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dim_45_dp"
+            android:layout_weight="0.25"
+            android:layout_marginStart="@dimen/spacing_10_dp">
+
+            <com.lime.android.ui.customview.robototextview.RobotoTextView
+                android:id="@+id/tv_weight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/edit_text_bg"
+                android:gravity="center_vertical"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/dim_15_sp"
+                android:textColor="@color/colorPrimary"
+                android:drawableEnd="@drawable/ic_arrow_down_icon"
+                android:paddingLeft="@dimen/dim_15_dp"
+                android:paddingEnd="@dimen/dim_15_dp"
+                app:et_fontName="lato_regular.ttf"/>
+            <Spinner
+                android:id="@+id/spinner_weight"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <com.lime.android.ui.customview.robotobutton.RobotoButton
+        android:id="@+id/btn_check_fare"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_45_dp"
+        android:background="@drawable/primary_button_selector"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:text="@string/check_fare"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dim_15_sp"
+        android:outlineProvider="bounds"
+        android:elevation="@dimen/spacing_5_dp"
+        android:translationZ="@dimen/spacing_5_dp"
+        android:stateListAnimator="@null"
+        android:layout_marginTop="@dimen/dim_120_dp"
+        android:layout_marginBottom="@dimen/dim_10_dp"
+        app:bt_fontName="lato_regular.ttf"/>
+
+    <com.lime.android.ui.customview.robotobutton.RobotoButton
+        android:id="@+id/btn_bid"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_45_dp"
+        android:background="@drawable/selected_black_btn_bg"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:text="@string/bid_now"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dim_15_sp"
+        android:outlineProvider="bounds"
+        android:elevation="@dimen/spacing_5_dp"
+        android:translationZ="@dimen/spacing_5_dp"
+        android:stateListAnimator="@null"
+        android:layout_marginTop="@dimen/dim_10_dp"
+        android:layout_marginBottom="@dimen/dim_10_dp"
+        app:bt_fontName="lato_regular.ttf"/>
+
+</LinearLayout>

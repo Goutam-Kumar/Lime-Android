@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_100_dp"
+        android:src="@drawable/ic_bid_confirm_icon" />
+
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bid_success"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_18_sp"
+        android:layout_gravity="center_horizontal"
+        app:tv_fontName="lato_bold.ttf"/>
+
+    <com.lime.android.ui.customview.robotobutton.RobotoButton
+        android:id="@+id/btn_view_bids"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_45_dp"
+        android:background="@drawable/primary_button_selector"
+        android:elevation="@dimen/spacing_5_dp"
+        android:gravity="center"
+        android:outlineProvider="bounds"
+        android:stateListAnimator="@null"
+        android:text="@string/view_bids"
+        android:textAllCaps="true"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dim_15_sp"
+        android:translationZ="@dimen/spacing_5_dp"
+        android:layout_marginTop="@dimen/dim_70_dp"
+        android:layout_marginLeft="@dimen/dim_20_dp"
+        android:layout_marginRight="@dimen/dim_20_dp"
+        app:bt_fontName="lato_regular.ttf" />
+
+</LinearLayout>
