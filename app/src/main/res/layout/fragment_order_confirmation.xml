@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:id="@+id/img_success"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dim_60_dp"
+        android:src="@drawable/ic_bid_confirm_icon" />
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_confirmed"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_18_sp"
+        android:layout_gravity="center_horizontal"
+        app:tv_fontName="lato_bold.ttf"/>
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_informed"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_15_sp"
+        android:layout_marginTop="@dimen/spacing_5_dp"
+        android:layout_gravity="center_horizontal"
+        app:tv_fontName="lato_bregular.ttf"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/spacing_5_dp"
+        android:gravity="center_horizontal">
+
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:id="@+id/tv_order_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Oder ID: #123465"
+            android:gravity="center_horizontal"
+            android:textColor="@color/icon_tint_color"
+            android:textSize="@dimen/dim_12_sp"
+            android:layout_gravity="center_horizontal"
+            app:tv_fontName="lato_bregular.ttf"/>
+
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:id="@+id/tv_order_dt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date: 03-02-2020"
+            android:gravity="center_horizontal"
+            android:textColor="@color/icon_tint_color"
+            android:textSize="@dimen/dim_12_sp"
+            android:layout_marginStart="@dimen/dim_20_dp"
+            android:layout_gravity="center_horizontal"
+            app:tv_fontName="lato_bregular.ttf"/>
+    </LinearLayout>
+
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/order_summ"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_20_sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dim_30_dp"
+        app:tv_fontName="lato_bold.ttf"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_160_dp"
+        android:layout_marginLeft="@dimen/dim_20_dp"
+        android:layout_marginRight="@dimen/dim_20_dp"
+        android:layout_marginTop="@dimen/spacing_10_dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/rounded_top_gray_bg">
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/spacing_10_dp"
+                android:layout_weight="0.75">
+                <View
+                    android:layout_width="@dimen/dim_3_dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dim_23_dp"
+                    android:layout_marginTop="@dimen/dim_20_dp"
+                    android:layout_marginBottom="@dimen/dim_45_dp"
+                    android:background="@drawable/horizontal_dash_line"/>
+
+                <LinearLayout
+                    android:id="@+id/lin_pickup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_10_dp">
+                    <ImageView
+                        android:layout_width="@dimen/dim_30_dp"
+                        android:layout_height="@dimen/dim_30_dp"
+                        android:src="@drawable/ic_pickup_location_icon"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical">
+                        <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pick_up"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dim_15_sp"
+                            app:tv_fontName="lato_bold.ttf"/>
+                        <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:id="@+id/tv_pickup"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/select_pickup"
+                            android:textColor="@color/icon_tint_color"
+                            android:textSize="@dimen/dim_12_sp"
+                            app:tv_fontName="lato_regular.ttf"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lin_drop"
+                    android:layout_below="@+id/lin_pickup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dim_20_dp"
+                    android:padding="@dimen/spacing_10_dp">
+                    <ImageView
+                        android:layout_width="@dimen/dim_30_dp"
+                        android:layout_height="@dimen/dim_30_dp"
+                        android:src="@drawable/ic_location_icon"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical">
+                        <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/drop_in"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/dim_15_sp"
+                            app:tv_fontName="lato_bold.ttf"/>
+                        <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:id="@+id/tv_drop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/select_drop"
+                            android:textColor="@color/icon_tint_color"
+                            android:textSize="@dimen/dim_12_sp"
+                            app:tv_fontName="lato_regular.ttf"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="0.5dp"
+                android:layout_height="wrap_content"
+                android:background="@color/border"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dim_160_dp"
+                android:orientation="vertical"
+                android:layout_weight="0.25"
+                android:weightSum="3">
+
+                <com.lime.android.ui.customview.robototextview.RobotoTextView
+                    android:id="@+id/tv_vehicle"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Mini Truck"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dim_10_sp"
+                    android:gravity="center"
+                    android:drawableTop="@drawable/ic_truck_large_icon"
+                    android:drawablePadding="-15dp"
+                    android:drawableTint="@color/black"
+                    android:paddingTop="@dimen/dim_10_dp"
+                    app:tv_fontName="lato_regular.ttf"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/border"/>
+
+                <com.lime.android.ui.customview.robototextview.RobotoTextView
+                    android:id="@+id/tv_weight"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="110 Ton"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dim_10_sp"
+                    android:gravity="center"
+                    android:drawableTint="@color/black"
+                    android:drawablePadding="-15dp"
+                    android:drawableTop="@drawable/ic_truck_weight_large"
+                    android:paddingTop="@dimen/dim_10_dp"
+                    app:tv_fontName="lato_regular.ttf"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.5dp"
+                    android:background="@color/border"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <com.lime.android.ui.customview.robototextview.RobotoTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/service_type"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dim_12_sp"
+                        android:gravity="center"
+                        app:tv_fontName="lato_bold.ttf"/>
+
+                    <com.lime.android.ui.customview.robototextview.RobotoTextView
+                        android:id="@+id/tv_service_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="Home Shifting"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dim_10_sp"
+                        android:gravity="top|center_horizontal"
+                        app:tv_fontName="lato_regular.ttf"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+    <!--End of Gray layout-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dim_30_dp"
+        android:layout_marginLeft="@dimen/dim_20_dp"
+        android:layout_marginRight="@dimen/dim_20_dp"
+        android:background="@drawable/rounded_bottom_primary_bg">
+
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/trip_rate"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dim_12_sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:paddingStart="@dimen/spacing_10_dp"
+            app:tv_fontName="lato_regular.ttf"/>
+
+        <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:id="@+id/tv_fare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MW 400"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dim_15_sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:paddingRight="@dimen/spacing_10_dp"
+            app:tv_fontName="lato_Bold.ttf"/>
+    </RelativeLayout>
+</LinearLayout>

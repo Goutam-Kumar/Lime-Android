@@ -8,4 +8,5 @@
     <color name="black_unselected">#292929</color>
     <color name="form_bg_color">#eeeeee</color>
     <color name="icon_tint_color">#797979</color>
+    <color name="border">#d3d3d3</color>
 </resources>

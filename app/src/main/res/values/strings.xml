@@ -46,4 +46,26 @@
     <string name="bid_success">Your bid has been placed\nsuccessfully</string>
     <string name="view_bids">View Bids</string>
     <string name="bid_conf">Bid Confirmation</string>
+    <string name="driver_selection">You have selected Driver with Fare</string>
+    <string name="service_type">Service Type</string>
+    <string name="trip_rate">Trip Rate</string>
+    <string name="tnc">I agree Terms and Conditions</string>
+    <string name="confirm_now">Confirm Now</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="individual">Individual</string>
+    <string name="company">Company</string>
+    <string name="billing_details">Billing Details</string>
+    <string name="busn_name">Business Name</string>
+    <string name="busn_email">Business Email</string>
+    <string name="contct_name">Contact Name</string>
+    <string name="address">Address</string>
+    <string name="bsn_doc">Business Documents</string>
+    <string name="nat_id">National ID No.</string>
+    <string name="certificate">Certificate If Incorporation (Upload Pdf)</string>
+    <string name="cons_bill">Consigner Bill</string>
+    <string name="book_now">Book Now</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="order_confirmed">Your Order is Confirmed</string>
+    <string name="order_informed">You will be informed by SMS or Call</string>
+    <string name="order_summ">Your Order Summary</string>
 </resources>

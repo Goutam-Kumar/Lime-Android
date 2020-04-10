@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
+    android:id="@+id/lin_parent_layout"
     android:layout_height="@dimen/dim_45_dp"
     android:layout_margin="@dimen/spacing_5_dp">
 
@@ -98,6 +99,7 @@
         android:layout_marginLeft="@dimen/spacing_10_dp">
 
         <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:id="@+id/tv_price"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/primary_button_selector"

@@ -21,7 +21,11 @@
         android:id="@+id/truckListFragment"
         android:name="com.lime.android.fragments.trucklist.TruckListFragment"
         android:label="TruckListFragment"
-        tools:layout="@layout/fragment_truck_list"/>
+        tools:layout="@layout/fragment_truck_list">
+        <action
+            android:id="@+id/action_truckListFragment_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/additionalDetailsFragment"
         android:name="com.lime.android.fragments.additionaldetails.AdditionalDetailsFragment"
@@ -45,4 +49,27 @@
         android:name="com.lime.android.fragments.bidconfirmation.BidConfirmationFragment"
         android:label="FragmentBidConfirmation"
         tools:layout="@layout/fragment_bid_confirmation"/>
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.lime.android.fragments.orderdetails.OrderDetailsFragment"
+        android:label="OrderDetailsFragment"
+        tools:layout="@layout/fragment_order_details">
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_billingDetailsFragment"
+            app:destination="@id/billingDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/billingDetailsFragment"
+        android:name="com.lime.android.fragments.billingdetails.BillingDetailsFragment"
+        android:label="BillingDetailsFragment"
+        tools:layout="@layout/fragment_billing_details">
+        <action
+            android:id="@+id/action_billingDetailsFragment_to_orderConfirmationFragment"
+            app:destination="@id/orderConfirmationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderConfirmationFragment"
+        android:name="com.lime.android.fragments.orderconfirmation.OrderConfirmationFragment"
+        android:label="OrderConfirmationFragment"
+        tools:layout="@layout/fragment_order_confirmation"/>
 </navigation>

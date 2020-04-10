@@ -27,6 +27,13 @@
         <attr name="et_fontName" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="RobotoCheckBox">
+        <attr name="ch_fontName" format="string" />
+    </declare-styleable>
+    <declare-styleable name="RobotoRadioButton">
+        <attr name="rd_fontName" format="string" />
+    </declare-styleable>
+
     <declare-styleable name="RobotoButton">
         <attr name="bt_fontName" format="string" />
     </declare-styleable>
