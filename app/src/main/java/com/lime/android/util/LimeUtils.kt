@@ -6,6 +6,9 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
+import android.widget.Toast
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.lime.android.R
 import com.squareup.picasso.Picasso
 
@@ -24,6 +27,15 @@ internal class LimeUtils {
             animation.repeatCount = Animation.INFINITE
             animation.repeatMode = Animation.REVERSE
             view.startAnimation(animation)
+        }
+        // To Create ViewModel instance
+        inline fun <VM : ViewModel> viewModelFactory(crossinline f: () -> VM) =
+            object : ViewModelProvider.Factory {
+                override fun <T : ViewModel> create(aClass: Class<T>):T = f() as T
+            }
+
+        fun makeToast(context: Context, message: String){
+            Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
         }
     }
 }

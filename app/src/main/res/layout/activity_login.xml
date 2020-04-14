@@ -33,18 +33,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dim_25_dp"
             android:layout_marginStart="@dimen/dim_20_dp"
-            android:layout_marginEnd="@dimen/dim_20_dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="@dimen/dim_25_dp"
+            android:layout_marginEnd="@dimen/dim_20_dp">
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dim_45_dp"
                 android:layout_weight="0.25"
                 android:background="@drawable/edit_text_bg"
-                android:padding="@dimen/spacing_10_dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:padding="@dimen/spacing_10_dp">
 
                 <ImageView
                     android:layout_width="@dimen/dim_35_dp"
@@ -52,30 +51,33 @@
                     android:src="@drawable/ic_malawi_flag_icon" />
 
                 <com.lime.android.ui.customview.robototextview.RobotoTextView
+                    android:id="@+id/tv_std_code"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/spacing_5_dp"
                     android:gravity="center_vertical"
-                    android:text="+265"
+                    android:text="@string/india_std_code"
                     android:textColor="@color/icon_tint_color"
                     android:textSize="@dimen/dim_15_sp"
-                    app:tv_fontName="lato_regular.ttf"/>
+                    app:tv_fontName="lato_regular.ttf" />
             </LinearLayout>
 
             <com.lime.android.ui.customview.robotoedittext.RobotoEditText
+                android:id="@+id/et_mobile_number"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dim_45_dp"
                 android:layout_marginStart="@dimen/spacing_10_dp"
                 android:layout_weight="0.70"
                 android:background="@drawable/edit_text_bg"
-                android:hint="@string/mobile"
-                android:textColorHint="@color/icon_tint_color"
+                android:baselineAligned="false"
                 android:gravity="center_vertical"
-                android:padding="@dimen/spacing_10_dp"
+                android:hint="@string/mobile"
                 android:inputType="phone"
-                android:textSize="@dimen/dim_15_sp"
-                android:textColor="@color/colorPrimary"
                 android:maxLength="10"
+                android:padding="@dimen/spacing_10_dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/icon_tint_color"
+                android:textSize="@dimen/dim_15_sp"
                 app:et_fontName="lato_regular.ttf">
 
             </com.lime.android.ui.customview.robotoedittext.RobotoEditText>

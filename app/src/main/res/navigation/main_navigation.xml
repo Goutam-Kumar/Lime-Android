@@ -72,4 +72,14 @@
         android:name="com.lime.android.fragments.orderconfirmation.OrderConfirmationFragment"
         android:label="OrderConfirmationFragment"
         tools:layout="@layout/fragment_order_confirmation"/>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.lime.android.fragments.aboutus.AboutUsFragment"
+        android:label="AboutUsFragment"
+        tools:layout="@layout/fragment_about_us"/>
+    <fragment
+        android:id="@+id/tnCFragment"
+        android:name="com.lime.android.fragments.termsandconditions.TnCFragment"
+        android:label="TnCFragment"
+        tools:layout="@layout/fragment_tnc"/>
 </navigation>

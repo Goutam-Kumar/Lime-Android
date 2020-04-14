@@ -17,8 +17,6 @@ import com.lime.android.screens.dashboard.MainActivity
 import com.lime.android.R
 import com.lime.android.ui.navigationui.LiveNavigationField
 import com.lime.android.ui.navigationui.NavigationEvent
-import com.rigsit.android.ui.CustomSpinnerConfig
-import com.rigsit.android.ui.CustomSpinnerFragment
 
 abstract class BaseFragment : Fragment(){
 

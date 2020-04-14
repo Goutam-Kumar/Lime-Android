@@ -1,4 +1,4 @@
-package com.rigsit.android.ui
+package com.lime.android.ui
 
 import android.content.Context
 import android.os.Parcelable

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dim_100_dp"
+    android:background="@color/white"
+    android:padding="@dimen/spacing_10_dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_user_image"
+        android:layout_width="@dimen/dim_50_dp"
+        android:layout_height="@dimen/dim_50_dp"
+        android:src="@drawable/ic_user_pic_icon"
+        android:layout_centerVertical="true"/>
+
+    <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/img_user_image"
+        android:text="John Vandella"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dim_15_sp"
+        android:layout_marginStart="@dimen/spacing_5_dp"
+        android:layout_centerVertical="true"
+        app:tv_fontName="lato_bold.ttf"/>
+
+    <ImageView
+        android:id="@+id/img_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_back_black"
+        android:padding="@dimen/spacing_5_dp"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

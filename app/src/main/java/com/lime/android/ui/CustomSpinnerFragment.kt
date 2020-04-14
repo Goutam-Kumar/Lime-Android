@@ -1,4 +1,4 @@
-package com.rigsit.android.ui
+package com.lime.android.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.lime.android.R
-import com.lime.android.ui.BaseFragment
 import com.lime.android.ui.customview.dotloader.DotLoader
 import java.util.*
 

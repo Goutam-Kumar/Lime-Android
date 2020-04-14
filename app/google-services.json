@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "51222422273",
+    "firebase_url": "https://lime-bdce1.firebaseio.com",
+    "project_id": "lime-bdce1",
+    "storage_bucket": "lime-bdce1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:51222422273:android:ce2a15cfe3f4f64f60b100",
+        "android_client_info": {
+          "package_name": "com.lime.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "51222422273-ikhidvs1auopg4pct1mrvt78otu9froo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.lime.android",
+            "certificate_hash": "c3d9ed3448256c06ae5aafd28f12e64077a0817e"
+          }
+        },
+        {
+          "client_id": "51222422273-1o6ik6oev3rgqn4jsag51vp1jmgul37t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkVJ-adCG6uHlnV5qABp5D4Zv9nIbgzJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "51222422273-1o6ik6oev3rgqn4jsag51vp1jmgul37t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
