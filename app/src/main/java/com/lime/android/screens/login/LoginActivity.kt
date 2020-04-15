@@ -1,19 +1,28 @@
 package com.lime.android.screens.login
 
+import android.app.ProgressDialog.show
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.firebase.iid.FirebaseInstanceId
 import com.lime.android.R
 import com.lime.android.screens.otp.OtpActivity
+import com.lime.android.screens.register.RegisterActivity
+import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
 import com.lime.android.ui.CustomSpinnerConfig
 import com.lime.android.ui.CustomSpinnerFragment
+import com.lime.android.util.GLOBAL_TAG
 import com.lime.android.util.LimeUtils
 import com.lime.android.util.PHONE_NUMBER
 
@@ -29,6 +38,19 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
         configureUI()
         setViewModelObservers()
+    }
+
+    init {
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w(GLOBAL_TAG, "getInstanceId failed", task.exception)
+                    return@OnCompleteListener
+                }
+                val token = task.result?.token
+                LimeSharedRepositoryImpl(this).fcmToken = token
+                Log.d(GLOBAL_TAG, token)
+            })
     }
 
     private fun setViewModelObservers() {
@@ -53,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
     private fun showServiceError(message: String?) {
         message?.let {
             val msg = it
-            MaterialAlertDialogBuilder(this)
+            AlertDialog.Builder(this)
                 .setMessage(msg)
                 .setPositiveButton(android.R.string.ok) { _, _ ->  }
                 .create().run {
@@ -66,6 +88,9 @@ class LoginActivity : AppCompatActivity() {
     private fun configureUI() {
         findViewById<Button>(R.id.btn_login).apply {
             setOnClickListener { viewModel.validateFields() }
+        }
+        findViewById<TextView>(R.id.tv_signup).setOnClickListener {
+            startActivity(Intent(this,RegisterActivity::class.java))
         }
         etMobileNumber = findViewById<EditText>(R.id.et_mobile_number)
         etMobileNumber.addTextChangedListener{

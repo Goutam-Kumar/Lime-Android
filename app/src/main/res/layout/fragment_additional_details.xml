@@ -46,13 +46,13 @@
     <RelativeLayout
         android:id="@+id/rel_vehicle"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dim_45_dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_5_dp"
         android:orientation="vertical">
         <com.lime.android.ui.customview.robototextview.RobotoTextView
             android:id="@+id/tv_vehicle"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dim_45_dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/edit_text_bg"
             android:hint="@string/select_vehicle"
             android:textColorHint="@color/icon_tint_color"
@@ -64,13 +64,17 @@
             android:drawableEnd="@drawable/ic_arrow_down_icon"
             android:paddingStart="@dimen/spacing_10_dp"
             android:paddingEnd="@dimen/dim_15_dp"
+            android:visibility="gone"
             app:et_fontName="lato_regular.ttf"/>
 
-        <Spinner
+        <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner_vehicle"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dim_45_dp"
-            android:visibility="invisible"/>
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_bg"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/select_vehicle"
+            android:visibility="visible" />
     </RelativeLayout>
 
     <com.lime.android.ui.customview.robototextview.RobotoTextView
@@ -86,13 +90,13 @@
     <RelativeLayout
         android:id="@+id/rel_goods"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dim_45_dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_5_dp"
         android:orientation="vertical">
         <com.lime.android.ui.customview.robototextview.RobotoTextView
             android:id="@+id/tv_goods"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dim_45_dp"
+            android:layout_height="wrap_content"
             android:background="@drawable/edit_text_bg"
             android:hint="@string/select_good_type"
             android:textColorHint="@color/icon_tint_color"
@@ -101,15 +105,20 @@
             android:textColor="@color/colorPrimary"
             android:drawablePadding="@dimen/spacing_5_dp"
             android:drawableEnd="@drawable/ic_arrow_down_icon"
+            android:visibility="gone"
             android:paddingLeft="@dimen/dim_15_dp"
             android:paddingEnd="@dimen/dim_15_dp"
             app:et_fontName="lato_regular.ttf"/>
 
-        <Spinner
+        <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinner_goods"
+            style="@style/themeSpinner"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dim_45_dp"
-            android:visibility="invisible"/>
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_bg_wo_icon"
+            android:spinnerMode="dropdown"
+            android:prompt="@string/select_good_type"
+            android:visibility="visible"/>
     </RelativeLayout>
 
     <com.lime.android.ui.customview.robototextview.RobotoTextView

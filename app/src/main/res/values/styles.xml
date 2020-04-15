@@ -22,4 +22,11 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
+    <style name="themeSpinner" parent="@android:style/Widget.Holo.DropDownItem.Spinner">
+        <item name="android:background">@drawable/spinner_bg</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
+        <item name="errorTextColor">@android:color/holo_red_dark</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
 </resources>

@@ -1,6 +1,9 @@
 package com.lime.android.util
 
+import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
+import android.provider.Settings.Secure
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -36,6 +39,28 @@ internal class LimeUtils {
 
         fun makeToast(context: Context, message: String){
             Toast.makeText(context,message,Toast.LENGTH_SHORT).show()
+        }
+
+        fun isEmailValid(email: String): Boolean {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        }
+
+        @SuppressLint("HardwareIds")
+        fun getDeviceID(context: Context): String? {
+            return Secure.getString(context.contentResolver, Secure.ANDROID_ID)
+        }
+
+        fun showServiceError(msgWrapper: String?, context: Context) {
+            msgWrapper?.let {
+                val msg = it
+                AlertDialog.Builder(context)
+                    .setMessage(msg)
+                    .setPositiveButton(android.R.string.ok) { _, _ ->  }
+                    .create().run {
+                        setCanceledOnTouchOutside(false)
+                        show()
+                    }
+            }
         }
     }
 }

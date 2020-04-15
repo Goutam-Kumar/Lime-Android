@@ -6,7 +6,9 @@ import android.os.Handler
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.lime.android.R
+import com.lime.android.screens.dashboard.MainActivity
 import com.lime.android.screens.login.LoginActivity
+import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
 
 private const val TIME_OUT_TIME: Long = 3000
 class SplashActivity : AppCompatActivity() {
@@ -20,7 +22,10 @@ class SplashActivity : AppCompatActivity() {
 
     private fun configureHandler() {
         Handler().postDelayed(Runnable {
-            startActivity(Intent(this,LoginActivity::class.java))
+            if (LimeSharedRepositoryImpl(this).isLoggedIn)
+                startActivity(Intent(this,MainActivity::class.java))
+            else
+                startActivity(Intent(this,LoginActivity::class.java))
             this.finish()
         }, TIME_OUT_TIME)
     }

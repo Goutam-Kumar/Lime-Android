@@ -112,6 +112,7 @@
             app:tv_fontName="lato_regular.ttf"/>
 
         <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:id="@+id/tv_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"

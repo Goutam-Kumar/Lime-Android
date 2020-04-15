@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item>
+        <layer-list>
+
+            <item>
+                <shape>
+                    <corners android:radius="@dimen/dim_3_dp" />
+                    <solid android:color="@color/form_bg_color"/>
+                    <padding
+                        android:bottom="@dimen/spacing_10_dp"
+                        android:left="@dimen/dim_15_dp"
+                        android:right="@dimen/dim_15_dp"
+                        android:top="@dimen/spacing_10_dp" />
+                </shape>
+            </item>
+            <!--<item
+                android:width="30dp"
+                android:height="20dp">
+                <bitmap
+                    android:gravity="center_vertical|left"
+                    android:src="@drawable/ic_truck_small_icon" />
+
+            </item>-->
+            <item
+                android:width="@dimen/dim_30_dp"
+                android:height="@dimen/dim_18_dp"
+                android:drawable="@drawable/ic_truck_small_icon"
+                android:gravity="center_vertical|left" />
+            <item>
+                <bitmap
+                    android:gravity="center_vertical|right"
+                    android:src="@drawable/ic_down_arrow_png" />
+            </item>
+        </layer-list>
+    </item>
+</layer-list>

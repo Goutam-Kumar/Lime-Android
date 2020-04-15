@@ -33,4 +33,5 @@
     <dimen name="dim_80_dp">80dp</dimen>
     <dimen name="dim_160_dp">160dp</dimen>
     <dimen name="dim_23_dp">23dp</dimen>
+    <dimen name="dim_18_dp">18dp</dimen>
 </resources>

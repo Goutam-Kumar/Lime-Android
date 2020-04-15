@@ -45,12 +45,17 @@ class LoginViewModel(private val context: Context): ViewModel() {
 
     private fun onFailure(exception: String) {
         showSpinner(false)
+        _serviceException.value = exception
     }
 
     private fun onSuccessLogin(response: MODLoginResponse?) {
         showSpinner(false)
         response?.let {
-            LimeSharedRepositoryImpl(context).loggedInUser = response.data.userinfo
+            if (response.success == 0){
+                onFailure(response.message)
+            }else{
+                LimeSharedRepositoryImpl(context).loggedInUser = response.data?.userinfo!!
+            }
             _progress.value = response.success == 1
         }
     }

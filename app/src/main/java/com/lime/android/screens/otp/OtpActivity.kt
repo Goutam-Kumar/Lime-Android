@@ -16,6 +16,7 @@ import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
 import com.lime.android.R
 import com.lime.android.screens.dashboard.MainActivity
+import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
 import com.lime.android.util.GLOBAL_TAG
 import com.lime.android.util.LimeUtils
 import com.lime.android.util.PHONE_NUMBER
@@ -103,8 +104,10 @@ class OtpActivity : AppCompatActivity() {
     private fun signInUserByCredential(credential: PhoneAuthCredential) {
         val fireBaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
         fireBaseAuth.signInWithCredential(credential).addOnCompleteListener { task: Task<AuthResult> ->
-            if (task.isSuccessful)
+            if (task.isSuccessful){
+                LimeSharedRepositoryImpl(this).isLoggedIn = true
                 startActivity(Intent(this@OtpActivity, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK ).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+            }
             else
                 LimeUtils.makeToast(this@OtpActivity,task.exception?.message.orEmpty())
         }

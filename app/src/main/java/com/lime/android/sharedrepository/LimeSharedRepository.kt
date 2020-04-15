@@ -5,6 +5,8 @@ import com.lime.android.models.login.Userinfo
 
 interface LimeSharedRepository {
     var loggedInUser: Userinfo
+    var fcmToken: String?
+    var isLoggedIn: Boolean
 
     fun storeData(data: String): String
     fun fetchData(key: String): String

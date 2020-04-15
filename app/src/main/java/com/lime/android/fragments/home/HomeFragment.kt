@@ -1,6 +1,7 @@
 package com.lime.android.fragments.home
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -23,9 +25,11 @@ import com.google.android.libraries.places.api.net.PlacesClient
 import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.lime.android.R
 import com.lime.android.screens.dashboard.MainActivity
 import com.lime.android.ui.BaseFragment
+import com.lime.android.util.LimeUtils
 
 
 private const val AUTO_COMPLETE_REQ_CODE: Int = 2000
@@ -41,7 +45,7 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
     override val layoutResourceId: Int = R.layout.fragment_home
     private val viewModel by lazy {
         obtainViewModel {
-            HomeViewModel()
+            HomeViewModel(requireContext())
         }
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,10 +54,31 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
         val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         configureUI(view)
+        setViewModelObservers()
         if(!Places.isInitialized())
             Places.initialize(requireContext(), getString(R.string.api_key));
         placesClient = Places.createClient(requireContext())
+        viewModel.getVehicleCategories()
+    }
 
+    private fun setViewModelObservers() {
+        viewModel.run {
+            spinner.observe(viewLifecycleOwner, Observer { handleSpinner(it) })
+            serviceException.observe(viewLifecycleOwner, Observer { LimeUtils.showServiceError(it, requireContext()) })
+            vehicleTypes.observe(viewLifecycleOwner, Observer {
+                view?.apply {
+                    findViewById<RecyclerView>(R.id.rcv_vehicle_category).apply {
+                        layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
+                        addItemDecoration(MarginItemDecoration(resources.getDimension(R.dimen.dim_10_dp).toInt()))
+                        adapter = VehicleCategoryAdapter(
+                            {position: Int, vehicleId: Int ->
+                                viewModel.onVehicleClicked(position, vehicleId)
+                            },requireContext(), it
+                        )
+                    }
+                }
+            })
+        }
     }
 
     private fun configureUI(view: View) {
@@ -77,19 +102,10 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
                     onSearchCalled()
                 }
             }
-            findViewById<RecyclerView>(R.id.rcv_vehicle_category).apply {
-                layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
-                addItemDecoration(MarginItemDecoration(resources.getDimension(R.dimen.dim_10_dp).toInt()))
-                adapter = VehicleCategoryAdapter(
-                    {position: Int ->  
-                        viewModel.onVehicleClicked(position)
-                    },requireContext()
-                )
-            }
+
             findViewById<Button>(R.id.btn_continue).apply {
                 setOnClickListener { viewModel.onContinueClicked() }
             }
-
         }
     }
 
@@ -110,10 +126,16 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
                         val place = Autocomplete.getPlaceFromIntent(data!!)
                         Log.i(TAG, "Place: " + place.name + ", " + place.id + ", " + place.address)
                         val address = place.address
-                        if (pickUpLin  == currentClickedView)
+                        if (pickUpLin  == currentClickedView){
                             view?.findViewById<TextView>(R.id.tv_pickup)?.text = address
-                        else if (dropInLin == currentClickedView)
+                            viewModel.pickupLat = place.latLng?.latitude ?: 0.0
+                            viewModel.pickupLng = place.latLng?.longitude ?: 0.0
+                        }
+                        else if (dropInLin == currentClickedView){
                             view?.findViewById<TextView>(R.id.tv_drop)?.text =  address
+                            viewModel.dropLat = place.latLng?.latitude ?: 0.0
+                            viewModel.dropLng = place.latLng?.longitude ?: 0.0
+                        }
                     }
                     AutocompleteActivity.RESULT_ERROR -> {
                         val status = Autocomplete.getStatusFromIntent(data!!)
@@ -147,6 +169,7 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
                 setAllGesturesEnabled(true)
             }
         }
-
     }
+
+    private fun handleSpinner(showSpinner: Boolean) = if (showSpinner) showSpinner(isCancellable = false, isTransparent = false) else hideSpinner()
 }

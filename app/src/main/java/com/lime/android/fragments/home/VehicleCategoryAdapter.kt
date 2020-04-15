@@ -8,23 +8,32 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.lime.android.R
+import com.lime.android.models.vehicleTypes.VehicleType
+import com.lime.android.service.LIME_IMAGE_URL
 import com.lime.android.util.LimeUtils
 import kotlinx.android.synthetic.main.item_vehicle_category.view.*
 
 
-internal class VehicleCategoryAdapter(private val adapterOnClick : ( position : Int) -> Unit, private val context: Context):
+internal class VehicleCategoryAdapter(
+    private val adapterOnClick : ( position : Int, vehicleId: Int) -> Unit,
+    private val context: Context,
+    private val vehicles: List<VehicleType>?):
     RecyclerView.Adapter<VehicleCategoryAdapter.VehicleHolder>() {
-    private val dummy_url: String = "https://www.tatamotors.com/wp-content/uploads/2018/01/19065024/prima.jpg"
+    private var selectedPosition: Int = -1
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VehicleHolder {
         return VehicleHolder(LayoutInflater.from(context).inflate(R.layout.item_vehicle_category,parent,false))
     }
 
     override fun getItemCount(): Int {
-        return 5
+        return vehicles?.size ?: 0
     }
 
     override fun onBindViewHolder(holder: VehicleHolder, position: Int) {
-        holder.bind(position)
+        if(itemCount > 0)
+            vehicles?.let {
+                holder.bind(position, vehicles.get(position))
+            }
     }
 
     inner class VehicleHolder(itemView : View): RecyclerView.ViewHolder(itemView) {
@@ -32,25 +41,28 @@ internal class VehicleCategoryAdapter(private val adapterOnClick : ( position : 
         private val vehicleName = itemView.tv_vehicle_name
         private val vehicle = itemView.lin_vehicle
 
-        fun bind(position: Int){
-            LimeUtils.setImageUsingPicasso(context,vehicleImage,dummy_url)
-            vehicle.setOnTouchListener { _, motionEvent ->
-                when (motionEvent.action) {
-                    MotionEvent.ACTION_DOWN ->{
-                        vehicleName.setBackgroundResource(R.drawable.round_text_view_green_bg)
-                        vehicleImage.borderColor = ContextCompat.getColor(context,R.color.colorPrimary)
-                        adapterOnClick(position)
-                        return@setOnTouchListener true
-                    }
-                    MotionEvent.ACTION_UP -> {
-                        vehicleName.setBackgroundResource(R.drawable.round_text_view_black_bg)
-                        vehicleImage.borderColor = ContextCompat.getColor(context,R.color.black)
-                     return@setOnTouchListener true
-                    }
-                    else -> return@setOnTouchListener false
+        fun bind(position: Int,vcl: VehicleType){
+            LimeUtils.setImageUsingPicasso(context,vehicleImage,LIME_IMAGE_URL.plus(vcl.icon))
+            vehicleName.text = vcl.vehicletype
+
+            if (selectedPosition == adapterPosition) {
+                vehicleName.setBackgroundResource(R.drawable.round_text_view_green_bg)
+                vehicleImage.borderColor = ContextCompat.getColor(context,R.color.colorPrimary)
+            } else {
+                vehicleName.setBackgroundResource(R.drawable.round_text_view_black_bg)
+                vehicleImage.borderColor = ContextCompat.getColor(context,R.color.black)
+            }
+
+            vehicle.setOnClickListener {
+                vehicleName.setBackgroundResource(R.drawable.round_text_view_green_bg)
+                vehicleImage.borderColor = ContextCompat.getColor(context,R.color.colorPrimary)
+                notifyItemChanged(adapterPosition)
+                if (selectedPosition != adapterPosition) {
+                    notifyItemChanged(selectedPosition)
+                    selectedPosition = adapterPosition
                 }
+                adapterOnClick(position, vcl.id)
             }
         }
-
     }
 }

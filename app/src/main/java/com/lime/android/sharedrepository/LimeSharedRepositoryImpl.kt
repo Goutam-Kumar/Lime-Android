@@ -10,6 +10,8 @@ import com.lime.android.util.GLOBAL_TAG
 private const val FILE_NAME = "lime_prefs"
 private const val SIZE = "size"
 private const val LOGGED_IN_USER = "logged_in_user"
+private const val FCM_TOKEN = "logged_in_user"
+private const val IS_LOGGED_IN = "is_logged_in"
 
 internal class LimeSharedRepositoryImpl(context: Context): LimeSharedRepository {
 
@@ -21,12 +23,19 @@ internal class LimeSharedRepositoryImpl(context: Context): LimeSharedRepository 
         return Gson().toJson(intput)
     }
 
-    private fun jsonDeserealize(input: String, clazz: Class<out Any>): Class<out Any>{
-        return Gson().fromJson(input,clazz::class.java)
+    private fun jsonDeserealize(input: String): Userinfo{
+        return Gson().fromJson(input,Userinfo::class.java)
     }
+    override var isLoggedIn: Boolean
+        get() = sharedPreferences.getBoolean(IS_LOGGED_IN,false)
+        set(value) {sharedPreferences.edit {putBoolean(IS_LOGGED_IN,value)}}
+
+    override var fcmToken: String?
+        get() = sharedPreferences.getString(FCM_TOKEN,"")
+        set(value) {sharedPreferences.edit {putString(FCM_TOKEN,value)}}
 
     override var loggedInUser: Userinfo
-        get() = jsonDeserealize(sharedPreferences.getString(LOGGED_IN_USER, "").orEmpty(),Userinfo::class.java) as Userinfo
+        get() = jsonDeserealize(sharedPreferences.getString(LOGGED_IN_USER, "").orEmpty())
         set(value) {
             Log.d(GLOBAL_TAG,jsonSerialize(value))
             sharedPreferences.edit { putString(LOGGED_IN_USER, jsonSerialize(value)) }
