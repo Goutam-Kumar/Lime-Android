@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.lime.android.R
-import com.lime.android.models.goods.GoodsType
 
-internal class GoodsAdapter(val context: Context, var listItemsTxt: List<GoodsType>): BaseAdapter() {
+class WeightAdapter(val context: Context, var listItemsTxt: List<String>): BaseAdapter() {
     private val mInflater: LayoutInflater = LayoutInflater.from(context)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -24,16 +23,16 @@ internal class GoodsAdapter(val context: Context, var listItemsTxt: List<GoodsTy
             vh = view.tag as ItemRowHolder
         }
 
-        vh.label.text = listItemsTxt[position].name
+        vh.label.text = listItemsTxt[position]
         return view
     }
 
-    override fun getItem(position: Int): GoodsType {
+    override fun getItem(position: Int): String {
         return listItemsTxt[position]
     }
 
     override fun getItemId(position: Int): Long {
-        return listItemsTxt[position].id.toLong()
+        return position.toLong()
 
     }
 

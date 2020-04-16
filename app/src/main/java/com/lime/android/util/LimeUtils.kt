@@ -3,7 +3,9 @@ package com.lime.android.util
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.location.Location
 import android.provider.Settings.Secure
+import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
@@ -61,6 +63,18 @@ internal class LimeUtils {
                         show()
                     }
             }
+        }
+        fun getDistanceInKm(pickupLat: Double, pickupLng: Double, dropLat: Double, dropLng: Double): Float{
+            val results = FloatArray(1)
+            Location.distanceBetween(
+                pickupLat,
+                pickupLng,
+                dropLat,
+                dropLng,
+                results)
+            val retRes = if(results.isNotEmpty()) results[0]/1000 else 0.0f
+            Log.d(GLOBAL_TAG, "Distance:".plus(retRes).plus(" Km"))
+            return retRes
         }
     }
 }

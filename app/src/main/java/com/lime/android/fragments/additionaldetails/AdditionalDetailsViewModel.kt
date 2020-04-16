@@ -6,15 +6,19 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lime.android.OfferBidDestination
+import com.lime.android.TruckListDestination
 import com.lime.android.apprepository.LimeRepository
 import com.lime.android.apprepository.LimeRepositoryImpl
-import com.lime.android.models.vehicleandgoods.GoodsType
+import com.lime.android.models.goods.GoodsType
+import com.lime.android.models.goods.MODGoodsTypesRequest
+import com.lime.android.models.goods.MODGoodsTypesResponse
 import com.lime.android.models.vehicleandgoods.MODVehicleGoodsRequest
 import com.lime.android.models.vehicleandgoods.MODVehicleGoodsResponse
 import com.lime.android.models.vehicleandgoods.Vehicle
 import com.lime.android.networkhelper.ServiceResult
 import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
 import com.lime.android.ui.navigationui.NavigationViewModel
+import com.lime.android.util.DISTANCE
 import com.lime.android.util.VEHICLE_ID
 import kotlinx.coroutines.launch
 
@@ -26,10 +30,10 @@ class AdditionalDetailsViewModel(private val arguments: Bundle, private val cont
     private val _serviceException = MutableLiveData<String?>()
     val serviceException: LiveData<String?> = _serviceException
 
-    private val _vehicles = MutableLiveData<List<Vehicle>?>()
-    val vehicles: LiveData<List<Vehicle>?> = _vehicles
-    private val _goodsType = MutableLiveData<List<GoodsType>?>()
-    val goodsType: LiveData<List<GoodsType>?> = _goodsType
+    private val _goodsType = MutableLiveData<List<GoodsType>>()
+    val goodsType: LiveData<List<GoodsType>> = _goodsType
+    private val vehicleId = arguments.getInt(VEHICLE_ID)
+    private val distance = arguments.getFloat(DISTANCE)
 
     fun formattedDate(number: Int): String{
         return when {
@@ -47,11 +51,26 @@ class AdditionalDetailsViewModel(private val arguments: Bundle, private val cont
         viewModelScope.launch {
             showSpinner(true)
             when(val serviceResult =
-                limeRepository.getVehicleAndGoods(getVehicleGoodsRequest())){
-                is ServiceResult.Success -> onSuccessOfVehicleAndGoods(serviceResult.data)
+                limeRepository.getGoods(getGoodsTypesRequest())){
+                is ServiceResult.Success -> onSuccessOfGoods(serviceResult.data)
                 is ServiceResult.Error -> onFailure(serviceResult.exception)
             }
         }
+    }
+
+    private fun onSuccessOfGoods(response: MODGoodsTypesResponse?) {
+        showSpinner(false)
+        response?.let {
+            if (response.success == 1){
+                _goodsType.value = response.goods_type
+            }
+        }
+    }
+
+    private fun getGoodsTypesRequest(): MODGoodsTypesRequest {
+        return MODGoodsTypesRequest(
+            user_id = LimeSharedRepositoryImpl(context).loggedInUser.user_id
+        )
     }
 
     private fun onFailure(exception: String) {
@@ -59,27 +78,11 @@ class AdditionalDetailsViewModel(private val arguments: Bundle, private val cont
         _serviceException.value = exception
     }
 
-    private fun onSuccessOfVehicleAndGoods(response: MODVehicleGoodsResponse?) {
-        showSpinner(false)
-        response?.let {
-            if (response.success == 0){
-                _serviceException.value = response.message
-            }else{
-                _vehicles.value = response.vehicles
-                _goodsType.value = response.goods_type
-            }
-        }
-    }
-
-
-    private fun getVehicleGoodsRequest(): MODVehicleGoodsRequest {
-        return MODVehicleGoodsRequest(
-            user_id = LimeSharedRepositoryImpl(context).loggedInUser.user_id,
-            vehicle_id = arguments.getInt(VEHICLE_ID,0)
-        )
-    }
-
     private fun showSpinner(show: Boolean) {
         _spinner.value = show
+    }
+
+    fun onCheckFare() {
+        navigateTo(TruckListDestination(vehicleId,distance))
     }
 }

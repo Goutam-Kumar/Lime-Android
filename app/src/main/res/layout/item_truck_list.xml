@@ -4,10 +4,11 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:id="@+id/lin_parent_layout"
-    android:layout_height="@dimen/dim_45_dp"
+    android:layout_height="@dimen/dim_50_dp"
     android:layout_margin="@dimen/spacing_5_dp">
 
     <LinearLayout
+        android:id="@+id/lin_left"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="0.75"
@@ -17,19 +18,19 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_user_dp"
-            android:layout_width="@dimen/dim_35_dp"
-            android:layout_height="@dimen/dim_35_dp"
+            android:layout_width="@dimen/dim_40_dp"
+            android:layout_height="@dimen/dim_40_dp"
             android:layout_marginLeft="@dimen/spacing_5_dp"
-            android:layout_marginRight="@dimen/spacing_5_dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:layout_marginRight="@dimen/spacing_5_dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/spacing_10_dp"
             android:orientation="vertical">
             <com.lime.android.ui.customview.robototextview.RobotoTextView
+                android:id="@+id/vehicle_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="John Vandella"
                 android:textColor="@color/black"
                 android:textSize="@dimen/dim_15_sp"
                 android:layout_gravity="center_horizontal"
@@ -41,16 +42,17 @@
                 android:layout_marginTop="@dimen/spacing_5_dp"
                 android:gravity="center_vertical"
                 android:layout_gravity="center_vertical"
+                android:weightSum="3"
                 android:orientation="horizontal">
 
                 <com.lime.android.ui.customview.robototextview.RobotoTextView
                     android:id="@+id/tv_truck"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:drawableStart="@drawable/ic_truck"
-                    android:text="Mini Truck"
                     android:textColor="@color/icon_tint_color"
-                    android:textSize="@dimen/dim_10_sp"
+                    android:textSize="@dimen/dim_12_sp"
                     android:layout_gravity="center_vertical"
                     app:tv_fontName="lato_regular.ttf"/>
 
@@ -62,12 +64,12 @@
 
                 <com.lime.android.ui.customview.robototextview.RobotoTextView
                     android:id="@+id/tv_weight"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:drawableStart="@drawable/ic_truck_weight"
-                    android:text="100 Ton"
                     android:textColor="@color/icon_tint_color"
-                    android:textSize="@dimen/dim_10_sp"
+                    android:textSize="@dimen/dim_12_sp"
                     android:layout_gravity="center_vertical"
                     app:tv_fontName="lato_regular.ttf"/>
 
@@ -79,12 +81,12 @@
 
                 <com.lime.android.ui.customview.robototextview.RobotoTextView
                     android:id="@+id/tv_tyre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:drawableStart="@drawable/ic_truck_tyre"
-                    android:text="10 Tyre"
                     android:textColor="@color/icon_tint_color"
-                    android:textSize="@dimen/dim_10_sp"
+                    android:textSize="@dimen/dim_12_sp"
                     android:layout_gravity="center_vertical"
                     app:tv_fontName="lato_regular.ttf"/>
             </LinearLayout>
@@ -102,13 +104,12 @@
             android:id="@+id/tv_price"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/primary_button_selector"
-            android:text="MW 400"
+            android:gravity="center"
             android:textColor="@color/white"
             android:textSize="@dimen/dim_15_sp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"
-            app:tv_fontName="lato_regular.ttf"/>
+            app:tv_fontName="lato_regular.ttf" />
     </LinearLayout>
 
 </LinearLayout>

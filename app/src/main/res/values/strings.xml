@@ -95,4 +95,7 @@
     <string name="default_notification_channel_id">Lime_channel</string>
     <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
     <string name="check_tnc">Please check Terms and Conditions.</string>
+    <string name="choose_vehicle">Choose Vehicle</string>
+    <string name="currency">MW </string>
+    <string name="estimated_fare">Estimated Fare</string>
 </resources>

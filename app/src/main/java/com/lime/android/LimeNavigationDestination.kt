@@ -1,21 +1,31 @@
 package com.lime.android
 
+import android.os.Bundle
 import com.lime.android.ui.navigationui.NavigationArguments
 import com.lime.android.ui.navigationui.NavigationDestination
+import com.lime.android.util.DISTANCE
 import com.lime.android.util.PICKUP_LAT
 import com.lime.android.util.PICKUP_LNG
 import com.lime.android.util.VEHICLE_ID
 
-internal class TruckListDestination: NavigationDestination(R.id.truckListFragment)
+internal class TruckListDestination(vehicleId: Int, distance: Float): NavigationDestination(R.id.truckListFragment, getArgument(vehicleId,distance)){
+    companion object{
+        internal fun getVehicleId(arguments: Bundle) = arguments.getInt(VEHICLE_ID,0)
+        internal fun getDistance(arguments: Bundle) = arguments.getFloat(DISTANCE,0.0f)
+        internal fun getArgument(vehicleId: Int, distance: Float) = NavigationArguments.create{
+            putInt(VEHICLE_ID,vehicleId)
+            putFloat(DISTANCE, distance)
+        }
+    }
+}
 
-internal class AdditionalDetailsDestination(vehicleId: Int, pickupLat: Double, pickupLng: Double ):
-    NavigationDestination(R.id.additionalDetailsFragment, getArgument(vehicleId, pickupLat, pickupLng)){
+internal class AdditionalDetailsDestination(vehicleId: Int, distance: Float ):
+    NavigationDestination(R.id.additionalDetailsFragment, getArgument(vehicleId, distance)){
     companion object {
-        internal fun getArgument(vehicleId: Int, pickupLat: Double, pickupLng: Double) =
+        internal fun getArgument(vehicleId: Int, distance: Float) =
             NavigationArguments.create {
                 putInt(VEHICLE_ID, vehicleId)
-                putString(PICKUP_LAT, pickupLat.toString())
-                putString(PICKUP_LNG, pickupLng.toString())
+                putFloat(DISTANCE, distance)
             }
     }
 }

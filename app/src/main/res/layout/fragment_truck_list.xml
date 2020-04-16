@@ -12,8 +12,8 @@
         android:layout_weight="0.88"
         android:orientation="vertical"
         android:paddingTop="@dimen/dim_30_dp"
-        android:paddingLeft="@dimen/dim_20_dp"
-        android:paddingRight="@dimen/dim_20_dp">
+        android:paddingLeft="@dimen/spacing_10_dp"
+        android:paddingRight="@dimen/spacing_10_dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,7 +23,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.75"
-                android:text="@string/choose_truck"
+                android:text="@string/choose_vehicle"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/dim_15_sp"
                 android:layout_gravity="center_horizontal"

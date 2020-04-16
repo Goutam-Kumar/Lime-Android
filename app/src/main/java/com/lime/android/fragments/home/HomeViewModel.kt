@@ -17,7 +17,9 @@ import com.lime.android.networkhelper.ServiceResult
 import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
 import com.lime.android.ui.navigationui.NavigationViewModel
 import com.lime.android.util.GLOBAL_TAG
+import com.lime.android.util.LimeUtils
 import kotlinx.coroutines.launch
+import kotlin.math.round
 
 class HomeViewModel(private val context: Context): NavigationViewModel() {
     private val limeRepository: LimeRepository = LimeRepositoryImpl()
@@ -47,7 +49,8 @@ class HomeViewModel(private val context: Context): NavigationViewModel() {
 
     private fun validateAllReqData() {
         if (validateAllData()){
-            navigateTo(AdditionalDetailsDestination(selectedVehicleId,pickupLat,pickupLng))
+            val distance = round(LimeUtils.getDistanceInKm(pickupLat,pickupLng,dropLat,dropLng))
+            navigateTo(AdditionalDetailsDestination(selectedVehicleId,distance))
         }
     }
 

@@ -1,5 +1,7 @@
 package com.lime.android.apprepository
 
+import com.lime.android.models.goods.MODGoodsTypesRequest
+import com.lime.android.models.goods.MODGoodsTypesResponse
 import com.lime.android.models.login.MODLoginRequest
 import com.lime.android.models.login.MODLoginResponse
 import com.lime.android.models.main.MODFcmUpdateRequest
@@ -10,6 +12,8 @@ import com.lime.android.models.vehicleTypes.MODVehicleTypesRequest
 import com.lime.android.models.vehicleTypes.MODVehicleTypesResponse
 import com.lime.android.models.vehicleandgoods.MODVehicleGoodsRequest
 import com.lime.android.models.vehicleandgoods.MODVehicleGoodsResponse
+import com.lime.android.models.vehicles.MODVehiclesRequest
+import com.lime.android.models.vehicles.MODVehiclesResponse
 import com.lime.android.networkhelper.RetrofitCallbackHandler
 import com.lime.android.networkhelper.ServiceResult
 import com.lime.android.service.LimeRepositoryRetrofit
@@ -22,10 +26,18 @@ internal class LimeRepositoryImpl(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val rigsItService: LimeRepositoryServices = LimeRepositoryRetrofit().prepareService()
 ): LimeRepository {
-    override suspend fun getVehicleAndGoods(vehicleGoodsRequest: MODVehicleGoodsRequest): ServiceResult<MODVehicleGoodsResponse?> {
+    override suspend fun getVehicles(vehiclesRequest: MODVehiclesRequest): ServiceResult<MODVehiclesResponse?> {
         return withContext(ioDispatcher) {
             RetrofitCallbackHandler.processCall {
-                rigsItService.getVehicleAndGoods(vehicleGoodsRequest)
+                rigsItService.getVehicles(vehiclesRequest)
+            }
+        }
+    }
+
+    override suspend fun getGoods(goodsTypesRequest: MODGoodsTypesRequest): ServiceResult<MODGoodsTypesResponse?> {
+        return withContext(ioDispatcher) {
+            RetrofitCallbackHandler.processCall {
+                rigsItService.getGoods(goodsTypesRequest)
             }
         }
     }

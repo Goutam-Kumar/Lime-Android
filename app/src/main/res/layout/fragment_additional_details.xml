@@ -33,7 +33,7 @@
         android:paddingStart="@dimen/spacing_10_dp"
         app:et_fontName="lato_regular.ttf"/>
 
-    <com.lime.android.ui.customview.robototextview.RobotoTextView
+    <!--<com.lime.android.ui.customview.robototextview.RobotoTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/select_vehicle_type"
@@ -75,7 +75,7 @@
             android:spinnerMode="dropdown"
             android:prompt="@string/select_vehicle"
             android:visibility="visible" />
-    </RelativeLayout>
+    </RelativeLayout>-->
 
     <com.lime.android.ui.customview.robototextview.RobotoTextView
         android:layout_width="match_parent"
@@ -156,7 +156,7 @@
             android:layout_weight="0.25"
             android:layout_marginStart="@dimen/spacing_10_dp">
 
-            <com.lime.android.ui.customview.robototextview.RobotoTextView
+            <!--<com.lime.android.ui.customview.robototextview.RobotoTextView
                 android:id="@+id/tv_weight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -168,12 +168,22 @@
                 android:drawableEnd="@drawable/ic_arrow_down_icon"
                 android:paddingLeft="@dimen/dim_15_dp"
                 android:paddingEnd="@dimen/dim_15_dp"
-                app:et_fontName="lato_regular.ttf"/>
-            <Spinner
+                app:et_fontName="lato_regular.ttf"/>-->
+            <!--<Spinner
                 android:id="@+id/spinner_weight"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="invisible"/>
+                android:visibility="invisible"/>-->
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinner_weight"
+                style="@style/themeSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/spinner_bg_wo_icon"
+                android:spinnerMode="dropdown"
+                android:prompt="@string/weight_ton_kg"
+                android:visibility="visible"/>
         </RelativeLayout>
 
 

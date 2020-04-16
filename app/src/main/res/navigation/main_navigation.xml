@@ -11,9 +11,6 @@
         android:name="com.lime.android.fragments.home.HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_mainFragment_to_truckListFragment"
-            app:destination="@id/truckListFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_additionalDetailsFragment"
             app:destination="@id/additionalDetailsFragment" />
     </fragment>
@@ -34,6 +31,9 @@
         <action
             android:id="@+id/action_additionalDetailsFragment_to_offerBidFragment"
             app:destination="@id/offerBidFragment" />
+        <action
+            android:id="@+id/action_additionalDetailsFragment_to_truckListFragment"
+            app:destination="@id/truckListFragment" />
     </fragment>
     <fragment
         android:id="@+id/offerBidFragment"
