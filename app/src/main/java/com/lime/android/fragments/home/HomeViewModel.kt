@@ -10,6 +10,8 @@ import com.lime.android.R
 import com.lime.android.TruckListDestination
 import com.lime.android.apprepository.LimeRepository
 import com.lime.android.apprepository.LimeRepositoryImpl
+import com.lime.android.datarepository.DataHolder
+import com.lime.android.datarepository.LimeBookingInformation
 import com.lime.android.models.vehicleTypes.MODVehicleTypesRequest
 import com.lime.android.models.vehicleTypes.MODVehicleTypesResponse
 import com.lime.android.models.vehicleTypes.VehicleType
@@ -36,6 +38,8 @@ class HomeViewModel(private val context: Context): NavigationViewModel() {
     var pickupLng: Double = 0.0
     var dropLat: Double = 0.0
     var dropLng: Double = 0.0
+    var pickUpAddress: String? = null
+    var dropAddress: String? = null
 
     fun onVehicleClicked(position: Int, vehicleId: Int) {
         Log.d(GLOBAL_TAG,vehicleId.toString())
@@ -50,7 +54,17 @@ class HomeViewModel(private val context: Context): NavigationViewModel() {
     private fun validateAllReqData() {
         if (validateAllData()){
             val distance = round(LimeUtils.getDistanceInKm(pickupLat,pickupLng,dropLat,dropLng))
-            navigateTo(AdditionalDetailsDestination(selectedVehicleId,distance))
+            val limeBookingInformation = LimeBookingInformation(
+                pickUpLat = pickupLat,
+                pickUpLng = pickupLng,
+                dropLat = dropLat,
+                dropLng = dropLng,
+                pickUpAddress = pickUpAddress,
+                dropAddress = dropAddress,
+                distance = distance
+            )
+            val dataHolder = DataHolder.build(limeBookingInformation)
+            navigateTo(AdditionalDetailsDestination(selectedVehicleId,distance, dataHolder))
         }
     }
 

@@ -9,6 +9,7 @@ import com.lime.android.OfferBidDestination
 import com.lime.android.TruckListDestination
 import com.lime.android.apprepository.LimeRepository
 import com.lime.android.apprepository.LimeRepositoryImpl
+import com.lime.android.getLimeDataHolder
 import com.lime.android.models.goods.GoodsType
 import com.lime.android.models.goods.MODGoodsTypesRequest
 import com.lime.android.models.goods.MODGoodsTypesResponse
@@ -34,6 +35,7 @@ class AdditionalDetailsViewModel(private val arguments: Bundle, private val cont
     val goodsType: LiveData<List<GoodsType>> = _goodsType
     private val vehicleId = arguments.getInt(VEHICLE_ID)
     private val distance = arguments.getFloat(DISTANCE)
+    private val dataHolder = getLimeDataHolder(arguments)
 
     fun formattedDate(number: Int): String{
         return when {
@@ -83,6 +85,6 @@ class AdditionalDetailsViewModel(private val arguments: Bundle, private val cont
     }
 
     fun onCheckFare() {
-        navigateTo(TruckListDestination(vehicleId,distance))
+        navigateTo(TruckListDestination(vehicleId,distance,dataHolder!! ))
     }
 }

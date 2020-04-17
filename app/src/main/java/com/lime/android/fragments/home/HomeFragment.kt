@@ -130,11 +130,13 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
                             view?.findViewById<TextView>(R.id.tv_pickup)?.text = address
                             viewModel.pickupLat = place.latLng?.latitude ?: 0.0
                             viewModel.pickupLng = place.latLng?.longitude ?: 0.0
+                            viewModel.pickUpAddress = address
                         }
                         else if (dropInLin == currentClickedView){
                             view?.findViewById<TextView>(R.id.tv_drop)?.text =  address
                             viewModel.dropLat = place.latLng?.latitude ?: 0.0
                             viewModel.dropLng = place.latLng?.longitude ?: 0.0
+                            viewModel.dropAddress = address
                         }
                     }
                     AutocompleteActivity.RESULT_ERROR -> {

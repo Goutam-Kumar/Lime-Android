@@ -46,7 +46,7 @@
     <string name="bid_success">Your bid has been placed\nsuccessfully</string>
     <string name="view_bids">View Bids</string>
     <string name="bid_conf">Bid Confirmation</string>
-    <string name="driver_selection">You have selected Driver with Fare</string>
+    <string name="driver_selection">You have selected Vehicle with Fare</string>
     <string name="service_type">Service Type</string>
     <string name="trip_rate">Trip Rate</string>
     <string name="tnc">I agree Terms and Conditions</string>
@@ -98,4 +98,5 @@
     <string name="choose_vehicle">Choose Vehicle</string>
     <string name="currency">MW </string>
     <string name="estimated_fare">Estimated Fare</string>
+    <string name="engine_type">Engine Type</string>
 </resources>

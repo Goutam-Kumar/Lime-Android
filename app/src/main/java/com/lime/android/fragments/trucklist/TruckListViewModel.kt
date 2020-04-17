@@ -6,9 +6,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lime.android.OrderDetailsDestination
+import com.lime.android.R
 import com.lime.android.TruckListDestination
 import com.lime.android.apprepository.LimeRepository
 import com.lime.android.apprepository.LimeRepositoryImpl
+import com.lime.android.datarepository.DataHolder
+import com.lime.android.datarepository.LimeBookingInformation
+import com.lime.android.getLimeDataHolder
 import com.lime.android.models.vehicles.MODVehiclesRequest
 import com.lime.android.models.vehicles.MODVehiclesResponse
 import com.lime.android.models.vehicles.Vehicle
@@ -21,7 +25,7 @@ class TruckListViewModel(private val arguments: Bundle,private val context: Cont
     private val vehicleId = TruckListDestination.getVehicleId(arguments)
     val distance = TruckListDestination.getDistance(arguments)
     private val limeRepository: LimeRepository = LimeRepositoryImpl()
-    lateinit var selectedVehicle: Vehicle
+    var selectedVehicle: Vehicle? = null
 
     private val _vehicleList = MutableLiveData<List<Vehicle>?>()
     val vehicleList: LiveData<List<Vehicle>?> = _vehicleList
@@ -68,6 +72,25 @@ class TruckListViewModel(private val arguments: Bundle,private val context: Cont
     }
 
     fun onClickProceed() {
-        navigateTo(OrderDetailsDestination())
+        if (selectedVehicle != null){
+            val dataHolder = getLimeDataHolder(arguments)
+            if (dataHolder != null){
+                val limeBookingInformation = LimeBookingInformation(
+                    pickUpLat = dataHolder.pickUpLat,
+                    pickUpLng = dataHolder.pickUpLng,
+                    dropLat = dataHolder.dropLat,
+                    dropLng = dataHolder.dropLng,
+                    pickUpAddress = dataHolder.pickUpAddress,
+                    dropAddress = dataHolder.dropAddress,
+                    vehicle = selectedVehicle,
+                    distance = dataHolder.distance
+                )
+                navigateTo(OrderDetailsDestination(DataHolder.build(limeBookingInformation)))
+            }else{
+                navigateTo(OrderDetailsDestination(DataHolder.build(LimeBookingInformation(vehicle = selectedVehicle))))
+            }
+        }else{
+            _serviceException.value = context.getString(R.string.select_vehicle)
+        }
     }
 }

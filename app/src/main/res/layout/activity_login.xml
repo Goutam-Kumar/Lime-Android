@@ -24,11 +24,11 @@
         <com.lime.android.ui.customview.robototextview.RobotoTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dim_20_dp"
             android:text="@string/lets_start"
             android:textColor="@color/black"
             android:textSize="@dimen/dim_20_sp"
-            app:tv_fontName="lato_regular.ttf"
-            android:layout_marginTop="@dimen/dim_20_dp"/>
+            app:tv_fontName="lato_regular.ttf" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,7 +56,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/spacing_5_dp"
                     android:gravity="center_vertical"
-                    android:text="@string/india_std_code"
+                    android:text="@string/malawi_std_code"
                     android:textColor="@color/icon_tint_color"
                     android:textSize="@dimen/dim_15_sp"
                     app:tv_fontName="lato_regular.ttf" />
@@ -126,7 +126,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/ic_or_divider"
-            android:layout_marginTop="-15dp"/>
+            android:layout_marginTop="@dimen/dim_minus_15_dp"/>
 
         <com.lime.android.ui.customview.robototextview.RobotoTextView
             android:layout_width="wrap_content"
@@ -135,7 +135,7 @@
             android:text="@string/register_partner"
             android:textColor="@color/black"
             android:textSize="@dimen/dim_15_sp"
-            android:layout_marginTop="-10dp"
+            android:layout_marginTop="@dimen/dim_minus_10_dp"
             app:tv_fontName="lato_regular.ttf"/>
     </LinearLayout>
 

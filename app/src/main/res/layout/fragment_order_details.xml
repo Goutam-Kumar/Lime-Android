@@ -23,10 +23,10 @@
             android:layout_gravity="center_horizontal"
             app:tv_fontName="lato_bold.ttf"/>
         <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:id="@+id/tv_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_5_dp"
-            android:text="MW 400"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/dim_16_sp"
             android:layout_gravity="center_horizontal"
@@ -52,7 +52,7 @@
                 android:padding="@dimen/spacing_10_dp"
                 android:layout_weight="0.75">
                 <View
-                    android:layout_width="@dimen/dim_3_dp"
+                    android:layout_width="3.5dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dim_23_dp"
                     android:layout_marginTop="@dimen/dim_20_dp"
@@ -85,8 +85,13 @@
                             android:id="@+id/tv_pickup"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="@string/select_pickup"
                             android:textColor="@color/icon_tint_color"
+                            android:singleLine="true"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:scrollHorizontally="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
                             android:textSize="@dimen/dim_12_sp"
                             app:tv_fontName="lato_regular.ttf"/>
                     </LinearLayout>
@@ -121,9 +126,14 @@
                             android:id="@+id/tv_drop"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:hint="@string/select_drop"
                             android:textColor="@color/icon_tint_color"
                             android:textSize="@dimen/dim_12_sp"
+                            android:singleLine="true"
+                            android:ellipsize="marquee"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:scrollHorizontally="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
                             app:tv_fontName="lato_regular.ttf"/>
                     </LinearLayout>
 
@@ -149,7 +159,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="Mini Truck"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dim_10_sp"
                     android:gravity="center"
@@ -169,7 +178,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:text="110 Ton"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dim_10_sp"
                     android:gravity="center"
@@ -192,7 +200,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="@string/service_type"
+                        android:text="@string/engine_type"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dim_12_sp"
                         android:gravity="center"
@@ -203,7 +211,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="Home Shifting"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dim_10_sp"
                         android:gravity="top|center_horizontal"
@@ -237,7 +244,6 @@
             android:id="@+id/tv_fare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MW 400"
             android:textColor="@color/white"
             android:textSize="@dimen/dim_15_sp"
             android:layout_centerVertical="true"
