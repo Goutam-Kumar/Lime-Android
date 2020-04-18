@@ -16,6 +16,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.lime.android.R
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.util.*
 
 internal class LimeUtils {
 
@@ -64,6 +66,7 @@ internal class LimeUtils {
                     }
             }
         }
+
         fun getDistanceInKm(pickupLat: Double, pickupLng: Double, dropLat: Double, dropLng: Double): Float{
             val results = FloatArray(1)
             Location.distanceBetween(
@@ -75,6 +78,11 @@ internal class LimeUtils {
             val retRes = if(results.isNotEmpty()) results[0]/1000 else 0.0f
             Log.d(GLOBAL_TAG, "Distance:".plus(retRes).plus(" Km"))
             return retRes
+        }
+
+        fun getTodaysDate(): String{
+            val sdf = SimpleDateFormat("dd-MM-yyyy")
+            return sdf.format(Date())
         }
     }
 }

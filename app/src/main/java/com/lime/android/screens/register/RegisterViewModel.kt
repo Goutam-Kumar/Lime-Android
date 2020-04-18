@@ -79,7 +79,7 @@ class RegisterViewModel(private val context: Context): ViewModel() {
             fcm_id = LimeSharedRepositoryImpl(context).fcmToken.orEmpty(),
             gender = "M",
             password = password,
-            phone_code = context.getString(R.string.india_std_code),
+            phone_code = context.getString(R.string.malawi_std_code),
             user_name = name,
             customer_type = custType
         )
@@ -96,7 +96,7 @@ class RegisterViewModel(private val context: Context): ViewModel() {
                 isValid = false
                 _phoneError.value = context.getString(R.string.mobile_error)
             }
-            phone.length != 10 -> {
+            phone.length >= 10 -> {
                 isValid = false
                 _phoneError.value = context.getString(R.string.mobile_format_error)
             }

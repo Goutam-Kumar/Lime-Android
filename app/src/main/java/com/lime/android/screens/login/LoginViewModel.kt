@@ -71,7 +71,7 @@ class LoginViewModel(private val context: Context): ViewModel() {
         if (TextUtils.isEmpty(mobNum)){
             isValid = false
             _mobileError.value = context.getString(R.string.mobile_error)
-        }else if (mobNum.length != 10){
+        }else if (mobNum.length >= 10){
             isValid = false
             _mobileError.value = context.getString(R.string.mobile_format_error)
         }

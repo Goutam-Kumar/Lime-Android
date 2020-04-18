@@ -7,6 +7,7 @@
     android:background="@color/white">
 
     <RadioGroup
+        android:id="@+id/radioGroup_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/dim_30_dp"
@@ -142,6 +143,7 @@
         android:textColorHint="@color/icon_tint_color"
         android:gravity="center_vertical"
         android:textSize="@dimen/dim_15_sp"
+        android:maxLines="1"
         android:textColor="@color/colorPrimary"
         android:drawableStart="@drawable/ic_upload_document_icon"
         app:et_fontName="lato_regular.ttf"/>
@@ -156,6 +158,7 @@
         android:textColorHint="@color/icon_tint_color"
         android:gravity="center_vertical"
         android:textSize="@dimen/dim_15_sp"
+        android:maxLines="1"
         android:textColor="@color/colorPrimary"
         android:drawableStart="@drawable/ic_upload_document_icon"
         app:et_fontName="lato_regular.ttf"/>

@@ -40,8 +40,24 @@ internal class OrderDetailsDestination(dataHolder: DataHolder)
         }
     }
 }
-internal class BillingDetailsDestination: NavigationDestination(R.id.billingDetailsFragment)
-internal class OrderConfirmationDestination: NavigationDestination(R.id.orderConfirmationFragment)
+internal class BillingDetailsDestination(dataHolder: DataHolder)
+    : NavigationDestination(R.id.billingDetailsFragment, getArguments(dataHolder)){
+    companion object{
+        internal fun getArguments(dataHolder: DataHolder) = NavigationArguments.create{
+            putParcelable(LIME_DATA_HOLDER, dataHolder)
+        }
+    }
+}
+internal class OrderConfirmationDestination(dataHolder: DataHolder, bookingId: Int)
+    : NavigationDestination(R.id.action_billingDetailsFragment_to_orderConfirmationFragment, getArguments(dataHolder,bookingId)){
+    companion object{
+        internal fun getBookingID(arguments: Bundle) = arguments.getInt(BOOKING_ID)
+        internal fun getArguments(dataHolder: DataHolder, bookingId: Int) = NavigationArguments.create{
+            putParcelable(LIME_DATA_HOLDER, dataHolder)
+            putInt(BOOKING_ID, bookingId)
+        }
+    }
+}
 
 internal fun getLimeDataHolder(arguments: Bundle) = arguments.getParcelable<DataHolder>(
     LIME_DATA_HOLDER)

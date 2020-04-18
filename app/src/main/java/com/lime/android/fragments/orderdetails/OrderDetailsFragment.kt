@@ -3,6 +3,7 @@ package com.lime.android.fragments.orderdetails
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import com.lime.android.R
@@ -11,6 +12,7 @@ import com.lime.android.fragments.offerbid.OfferBidViewModel
 import com.lime.android.models.vehicles.Vehicle
 import com.lime.android.screens.dashboard.MainActivity
 import com.lime.android.ui.BaseFragment
+import com.lime.android.util.LimeUtils
 import kotlin.math.roundToInt
 
 class OrderDetailsFragment: BaseFragment() {
@@ -62,7 +64,11 @@ class OrderDetailsFragment: BaseFragment() {
                 setMenuVisibility(View.GONE)
             }
 
-            findViewById<Button>(R.id.btn_continue).setOnClickListener { viewModel.onContinueClick() }
+            findViewById<Button>(R.id.btn_continue).setOnClickListener {
+                if (findViewById<CheckBox>(R.id.check_tnc).isChecked)
+                    viewModel.onContinueClick()
+                else
+                    LimeUtils.showServiceError(getString(R.string.tnc_required), requireContext())}
         }
     }
 }

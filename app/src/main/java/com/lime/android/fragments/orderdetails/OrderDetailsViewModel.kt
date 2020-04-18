@@ -20,6 +20,6 @@ internal class OrderDetailsViewModel(private val arguments: Bundle, private val 
     }
 
     fun onContinueClick() {
-        navigateTo(BillingDetailsDestination())
+        navigateTo(BillingDetailsDestination(dataHolder!!))
     }
 }

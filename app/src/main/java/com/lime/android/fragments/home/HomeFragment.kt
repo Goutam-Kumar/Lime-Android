@@ -112,7 +112,7 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
     private fun onSearchCalled() {
         view.let {
             val fields: List<Place.Field> = listOf(Place.Field.ID, Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG)
-            val intent: Intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields).setCountry("IN").build(requireContext())
+            val intent: Intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields).setCountry("MWI").build(requireContext())
             startActivityForResult(intent,AUTO_COMPLETE_REQ_CODE)
         }
     }
@@ -156,8 +156,8 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.apply {
-            val sydney = LatLng(20.5937, 78.9629)
-            mMap.addMarker(MarkerOptions().position(sydney).title("Marker in India"))
+            val sydney = LatLng(13.2543, 34.3015)
+            mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Malawi"))
             mMap.animateCamera(
                 CameraUpdateFactory.newLatLngZoom(
                     LatLng(

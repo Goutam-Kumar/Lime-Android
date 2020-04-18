@@ -2,6 +2,7 @@ package com.lime.android.screens.dashboard
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -23,7 +24,6 @@ import com.lime.android.R
 import com.lime.android.fragments.aboutus.AboutUsFragment
 import com.lime.android.fragments.home.HomeFragment
 import com.lime.android.fragments.termsandconditions.TnCFragment
-import com.lime.android.screens.login.LoginViewModel
 import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
 import com.lime.android.util.GLOBAL_TAG
 import com.lime.android.util.LimeUtils
@@ -152,5 +152,12 @@ class MainActivity : AppCompatActivity() {
 
     fun setToolbarVisibiliy(visibility: Int){
         findViewById<Toolbar>(R.id.toolbar).visibility = visibility
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+        val childFragments = navHostFragment?.childFragmentManager?.fragments
+        childFragments?.forEach { it.onActivityResult(requestCode, resultCode, data) }
     }
 }

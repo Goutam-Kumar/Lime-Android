@@ -99,4 +99,12 @@
     <string name="currency">MW </string>
     <string name="estimated_fare">Estimated Fare</string>
     <string name="engine_type">Engine Type</string>
+    <string name="tnc_required">Please check Terms and Conditions.</string>
+    <string name="select_bookingType">Please select one booking type.</string>
+    <string name="enter_b_name">Enter Business name.</string>
+    <string name="enter_b_email">Enter Business email.</string>
+    <string name="enter_c_name">Enter contact name.</string>
+    <string name="enter_address">Enter address.</string>
+    <string name="enter_natid">Enter Natonal ID.</string>
+    <string name="internal_storage">Internal storage</string>
 </resources>

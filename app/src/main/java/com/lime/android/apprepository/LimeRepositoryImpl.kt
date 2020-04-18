@@ -1,5 +1,6 @@
 package com.lime.android.apprepository
 
+import com.lime.android.models.booking.MODBookingResponse
 import com.lime.android.models.goods.MODGoodsTypesRequest
 import com.lime.android.models.goods.MODGoodsTypesResponse
 import com.lime.android.models.login.MODLoginRequest
@@ -21,11 +22,60 @@ import com.lime.android.service.LimeRepositoryServices
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 internal class LimeRepositoryImpl(
     private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
     private val rigsItService: LimeRepositoryServices = LimeRepositoryRetrofit().prepareService()
 ): LimeRepository {
+
+    override suspend fun bookNow(
+        auth: String,
+        pickup_address: RequestBody,
+        dropAddress: RequestBody,
+        bookingType: RequestBody,
+        userId: RequestBody,
+        fcmID: RequestBody,
+        pickupLat: RequestBody,
+        pickupLng: RequestBody,
+        dropLat: RequestBody,
+        dropLng: RequestBody,
+        email: RequestBody,
+        cName: RequestBody,
+        address: RequestBody,
+        natID: RequestBody,
+        noPerson: RequestBody,
+        vehicleTypeId: RequestBody,
+        certificate: MultipartBody.Part?,
+        bill: MultipartBody.Part?
+    ): ServiceResult<MODBookingResponse?> {
+        return withContext(ioDispatcher) {
+            RetrofitCallbackHandler.processCall {
+                rigsItService.bookNow(
+                    auth,
+                    pickup_address,
+                    dropAddress,
+                    bookingType,
+                    userId,
+                    fcmID,
+                    pickupLat,
+                    pickupLng,
+                    dropLat,
+                    dropLng,
+                    email,
+                    cName,
+                    address,
+                    natID,
+                    noPerson,
+                    vehicleTypeId,
+                    certificate,
+                    bill
+                )
+            }
+        }
+    }
+
     override suspend fun getVehicles(vehiclesRequest: MODVehiclesRequest): ServiceResult<MODVehiclesResponse?> {
         return withContext(ioDispatcher) {
             RetrofitCallbackHandler.processCall {
