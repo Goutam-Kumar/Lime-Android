@@ -2,20 +2,20 @@ package com.lime.android.fragments.additionaldetails
 
 import android.content.Context
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.lime.android.OfferBidDestination
+import com.lime.android.R
 import com.lime.android.TruckListDestination
 import com.lime.android.apprepository.LimeRepository
 import com.lime.android.apprepository.LimeRepositoryImpl
+import com.lime.android.datarepository.DataHolder
 import com.lime.android.getLimeDataHolder
 import com.lime.android.models.goods.GoodsType
 import com.lime.android.models.goods.MODGoodsTypesRequest
 import com.lime.android.models.goods.MODGoodsTypesResponse
-import com.lime.android.models.vehicleandgoods.MODVehicleGoodsRequest
-import com.lime.android.models.vehicleandgoods.MODVehicleGoodsResponse
-import com.lime.android.models.vehicleandgoods.Vehicle
 import com.lime.android.networkhelper.ServiceResult
 import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
 import com.lime.android.ui.navigationui.NavigationViewModel
@@ -36,6 +36,7 @@ class AdditionalDetailsViewModel(private val arguments: Bundle, private val cont
     private val vehicleId = arguments.getInt(VEHICLE_ID)
     private val distance = arguments.getFloat(DISTANCE)
     private val dataHolder = getLimeDataHolder(arguments)
+    var travelDate: String? = null
 
     fun formattedDate(number: Int): String{
         return when {
@@ -85,6 +86,23 @@ class AdditionalDetailsViewModel(private val arguments: Bundle, private val cont
     }
 
     fun onCheckFare() {
-        navigateTo(TruckListDestination(vehicleId,distance,dataHolder!! ))
+        if (!TextUtils.isEmpty(travelDate)){
+            dataHolder?.let {
+                val newDataHolder = DataHolder(
+                    dropLat = dataHolder.dropLat,
+                    dropLng = dataHolder.dropLng,
+                    dropAddress = dataHolder.dropAddress,
+                    distance = dataHolder.distance,
+                    vehicle = dataHolder.vehicle,
+                    pickUpAddress = dataHolder.pickUpAddress,
+                    pickUpLng = dataHolder.pickUpLng,
+                    pickUpLat = dataHolder.pickUpLat,
+                    travelDate = travelDate
+                )
+                navigateTo(TruckListDestination(vehicleId,distance,newDataHolder ))
+            }
+        }else{
+            _serviceException.value = context.getString(R.string.select_date)
+        }
     }
 }

@@ -109,7 +109,9 @@ class AdditionalDetailsFragment: BaseFragment(), AdapterView.OnItemSelectedListe
                 .append("/").append(viewModel.formattedDate(monthOfYear+1))
                 .append("/").append(viewModel.formattedDate(year))
                 .toString()
+            viewModel.travelDate = dateTxtView?.text.toString()
         }, year, month, day)
+        dpd.datePicker.minDate = System.currentTimeMillis() - 1000
         dpd.show()
     }
 

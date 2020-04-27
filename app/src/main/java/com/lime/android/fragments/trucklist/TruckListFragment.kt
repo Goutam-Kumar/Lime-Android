@@ -10,6 +10,7 @@ import com.lime.android.R
 import com.lime.android.fragments.home.HomeViewModel
 import com.lime.android.screens.dashboard.MainActivity
 import com.lime.android.ui.BaseFragment
+import com.lime.android.ui.customview.emptybox.EmptyBox
 import com.lime.android.util.LimeUtils
 
 class TruckListFragment: BaseFragment() {
@@ -36,6 +37,7 @@ class TruckListFragment: BaseFragment() {
                 view?.apply {
                     findViewById<RecyclerView>(R.id.rcv_truck_list).apply {
                         layoutManager = LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false)
+                        view?.findViewById<EmptyBox>(R.id.empty_box)?.visibility =  if(it.isNullOrEmpty()) View.VISIBLE else View.GONE
                         it?.let {
                             adapter = TruckListAdapter(
                                 {vehicle ->

@@ -3,35 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/dim_40_dp"
-        android:layout_marginLeft="@dimen/dim_20_dp"
-        android:layout_marginRight="@dimen/dim_20_dp"
-        android:layout_marginBottom="@dimen/dim_20_dp">
-        <com.lime.android.ui.customview.robototextview.RobotoTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/driver_selection"
-            android:textColor="@color/black"
-            android:textSize="@dimen/dim_16_sp"
-            android:layout_gravity="center_horizontal"
-            app:tv_fontName="lato_bold.ttf"/>
-        <com.lime.android.ui.customview.robototextview.RobotoTextView
-            android:id="@+id/tv_price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/spacing_5_dp"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/dim_16_sp"
-            android:layout_gravity="center_horizontal"
-            app:tv_fontName="lato_bold.ttf"/>
-    </LinearLayout>
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,22 +17,44 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:background="@drawable/rounded_top_gray_bg">
+
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_10_dp"
-                android:layout_weight="0.75">
+                android:layout_weight="0.65">
+
+                <com.lime.android.ui.customview.robototextview.RobotoTextView
+                    android:id="@+id/tv_order_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dim_12_sp"
+                    android:layout_marginStart="@dimen/dim_10_dp"
+                    app:tv_fontName="lato_bold.ttf"/>
+
+                <com.lime.android.ui.customview.robototextview.RobotoTextView
+                    android:id="@+id/tv_time"
+                    android:layout_below="@+id/tv_order_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dim_10_sp"
+                    android:layout_marginStart="@dimen/spacing_10_dp"
+                    app:tv_fontName="lato_regular.ttf"/>
+
                 <View
-                    android:layout_width="3.5dp"
+                    android:layout_width="@dimen/dim_3_dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/dim_23_dp"
-                    android:layout_marginTop="@dimen/dim_20_dp"
-                    android:layout_marginBottom="@dimen/dim_45_dp"
+                    android:layout_marginTop="@dimen/dim_60_dp"
+                    android:layout_marginBottom="@dimen/dim_30_dp"
                     android:background="@drawable/horizontal_dash_line"/>
 
                 <LinearLayout
                     android:id="@+id/lin_pickup"
+                    android:layout_below="@+id/tv_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
@@ -75,25 +69,12 @@
                         android:orientation="vertical"
                         android:layout_gravity="center_vertical">
                         <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:id="@+id/pick_up_loc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/pick_up"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dim_15_sp"
-                            app:tv_fontName="lato_bold.ttf"/>
-                        <com.lime.android.ui.customview.robototextview.RobotoTextView
-                            android:id="@+id/tv_pickup"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/icon_tint_color"
-                            android:singleLine="true"
-                            android:ellipsize="marquee"
-                            android:marqueeRepeatLimit="marquee_forever"
-                            android:scrollHorizontally="true"
-                            android:focusable="true"
-                            android:focusableInTouchMode="true"
                             android:textSize="@dimen/dim_12_sp"
-                            app:tv_fontName="lato_regular.ttf"/>
+                            app:tv_fontName="lato_bold.ttf"/>
                     </LinearLayout>
 
                 </LinearLayout>
@@ -104,11 +85,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="@dimen/dim_20_dp"
+                    android:layout_marginTop="@dimen/dim_10_dp"
                     android:padding="@dimen/spacing_10_dp">
                     <ImageView
                         android:layout_width="@dimen/dim_30_dp"
-                        android:layout_height="@dimen/dim_30_dp"
+                        android:layout_height="@dimen/dim_25_dp"
                         android:src="@drawable/ic_location_icon"/>
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -116,29 +97,16 @@
                         android:orientation="vertical"
                         android:layout_gravity="center_vertical">
                         <com.lime.android.ui.customview.robototextview.RobotoTextView
+                            android:id="@+id/drop_loc"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/drop_in"
                             android:textColor="@color/black"
-                            android:textSize="@dimen/dim_15_sp"
-                            app:tv_fontName="lato_bold.ttf"/>
-                        <com.lime.android.ui.customview.robototextview.RobotoTextView
-                            android:id="@+id/tv_drop"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/icon_tint_color"
                             android:textSize="@dimen/dim_12_sp"
-                            android:singleLine="true"
-                            android:ellipsize="marquee"
-                            android:marqueeRepeatLimit="marquee_forever"
-                            android:scrollHorizontally="true"
-                            android:focusable="true"
-                            android:focusableInTouchMode="true"
-                            app:tv_fontName="lato_regular.ttf"/>
+                            app:tv_fontName="lato_bold.ttf"/>
                     </LinearLayout>
 
                 </LinearLayout>
-                
+
 
             </RelativeLayout>
 
@@ -151,7 +119,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/dim_160_dp"
                 android:orientation="vertical"
-                android:layout_weight="0.25"
+                android:layout_weight="0.45"
                 android:weightSum="3">
 
                 <com.lime.android.ui.customview.robototextview.RobotoTextView
@@ -165,6 +133,7 @@
                     android:drawableTop="@drawable/ic_truck_large_icon"
                     android:drawablePadding="-15dp"
                     android:drawableTint="@color/black"
+                    android:maxLines="1"
                     android:paddingTop="@dimen/dim_10_dp"
                     app:tv_fontName="lato_regular.ttf"/>
 
@@ -173,19 +142,32 @@
                     android:layout_height="0.5dp"
                     android:background="@color/border"/>
 
-                <com.lime.android.ui.customview.robototextview.RobotoTextView
-                    android:id="@+id/tv_weight"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/dim_10_sp"
-                    android:gravity="center"
-                    android:drawableTint="@color/black"
-                    android:drawablePadding="-15dp"
-                    android:drawableTop="@drawable/ic_truck_weight_large"
-                    android:paddingTop="@dimen/dim_10_dp"
-                    app:tv_fontName="lato_regular.ttf"/>
+                    android:orientation="vertical"
+                    android:gravity="center">
+                    <com.lime.android.ui.customview.robototextview.RobotoTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/reached_time"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/dim_12_sp"
+                        android:gravity="center"
+                        app:tv_fontName="lato_bold.ttf"/>
+
+                    <com.lime.android.ui.customview.robototextview.RobotoTextView
+                        android:id="@+id/tv_reached_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/icon_tint_color"
+                        android:textSize="@dimen/dim_10_sp"
+                        android:gravity="top|center_horizontal"
+                        app:tv_fontName="lato_regular.ttf"/>
+                </LinearLayout>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
@@ -200,18 +182,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="@string/engine_type"
+                        android:text="@string/status"
                         android:textColor="@color/black"
                         android:textSize="@dimen/dim_12_sp"
                         android:gravity="center"
                         app:tv_fontName="lato_bold.ttf"/>
 
                     <com.lime.android.ui.customview.robototextview.RobotoTextView
-                        android:id="@+id/tv_service_type"
+                        android:id="@+id/tv_status"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:textColor="@color/black"
+                        android:textColor="@color/icon_tint_color"
                         android:textSize="@dimen/dim_10_sp"
                         android:gravity="top|center_horizontal"
                         app:tv_fontName="lato_regular.ttf"/>
@@ -230,52 +212,28 @@
         android:background="@drawable/rounded_bottom_primary_bg">
 
         <com.lime.android.ui.customview.robototextview.RobotoTextView
+            android:id="@+id/tv_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/trip_rate"
+            android:text="@string/price"
             android:textColor="@color/white"
             android:textSize="@dimen/dim_12_sp"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:paddingStart="@dimen/spacing_10_dp"
-            app:tv_fontName="lato_regular.ttf"/>
+            app:tv_fontName="lato_bold.ttf"/>
 
         <com.lime.android.ui.customview.robototextview.RobotoTextView
             android:id="@+id/tv_fare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:textSize="@dimen/dim_15_sp"
+            android:textSize="@dimen/dim_12_sp"
+            android:text="@string/received"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:paddingRight="@dimen/spacing_10_dp"
             app:tv_fontName="lato_bold.ttf"/>
     </RelativeLayout>
-
-    <com.lime.android.ui.customview.robotocheckbox.RobotoCheckBox
-        android:id="@+id/check_tnc"
-        android:theme="@style/themeCheck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tnc"
-        android:layout_margin="@dimen/dim_20_dp"
-        app:ch_fontName="lato_regular.ttf"/>
-
-    <com.lime.android.ui.customview.robotobutton.RobotoButton
-        android:id="@+id/btn_continue"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dim_45_dp"
-        android:layout_margin="@dimen/dim_20_dp"
-        android:background="@drawable/primary_button_selector"
-        android:elevation="@dimen/spacing_5_dp"
-        android:gravity="center"
-        android:outlineProvider="bounds"
-        android:stateListAnimator="@null"
-        android:text="@string/confirm_now"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textSize="@dimen/dim_15_sp"
-        android:translationZ="@dimen/spacing_5_dp"
-        app:bt_fontName="lato_regular.ttf" />
 
 </LinearLayout>

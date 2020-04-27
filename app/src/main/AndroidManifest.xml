@@ -10,8 +10,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <application
+        android:name=".util.LimeApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -66,6 +67,9 @@
         <activity
             android:name=".screens.register.RegisterActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".util.permissionhelper.PermissionsActivity"
+            android:theme="@style/Permissions.TransparentTheme" />
         <!--Services-->
         <service
             android:name=".fcm.MyFirebaseMessagingService"

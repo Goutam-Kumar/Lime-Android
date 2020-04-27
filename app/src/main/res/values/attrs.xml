@@ -37,4 +37,8 @@
     <declare-styleable name="RobotoButton">
         <attr name="bt_fontName" format="string" />
     </declare-styleable>
+
+    <declare-styleable name="EmptyBox">
+        <attr name="emptyText" format="string"/>
+    </declare-styleable>
 </resources>

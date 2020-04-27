@@ -7,6 +7,8 @@ import com.lime.android.models.login.MODLoginRequest
 import com.lime.android.models.login.MODLoginResponse
 import com.lime.android.models.main.MODFcmUpdateRequest
 import com.lime.android.models.main.MODFcmUpdateResponse
+import com.lime.android.models.orderhistory.MODCurrentOrderRequest
+import com.lime.android.models.orderhistory.MODCurrentOrderResponse
 import com.lime.android.models.register.MODRegisterRequest
 import com.lime.android.models.register.MODRegisterResponse
 import com.lime.android.models.vehicleTypes.MODVehicleTypesRequest
@@ -58,7 +60,12 @@ interface LimeRepositoryServices {
                         @Part("national_id") natID: RequestBody,
                         @Part("no_of_persons") noPerson: RequestBody,
                         @Part("vehicle_typeid") vehicleTypeId: RequestBody,
+                        @Part("pickup_date") pickUpDate: RequestBody,
+                        @Part("total_amount") totalAmount: RequestBody,
                         @Part certificate: MultipartBody.Part?,
                         @Part bill: MultipartBody.Part?
     ): Response<MODBookingResponse?>
+
+    @POST("ride-history")
+    suspend fun getCurrentOrders(@Body custId: MODCurrentOrderRequest, @Header("Authorization") apiToken: String): Response<MODCurrentOrderResponse?>
 }

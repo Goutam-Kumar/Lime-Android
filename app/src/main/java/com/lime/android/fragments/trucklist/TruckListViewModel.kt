@@ -51,6 +51,8 @@ class TruckListViewModel(private val arguments: Bundle,private val context: Cont
         response?.let {
             if (response.success == 1){
                 _vehicleList.value = response.vehicles
+            }else{
+                _vehicleList.value = emptyList()
             }
         }
     }
@@ -83,7 +85,8 @@ class TruckListViewModel(private val arguments: Bundle,private val context: Cont
                     pickUpAddress = dataHolder.pickUpAddress,
                     dropAddress = dataHolder.dropAddress,
                     vehicle = selectedVehicle,
-                    distance = dataHolder.distance
+                    distance = dataHolder.distance,
+                    travelDate = dataHolder.travelDate
                 )
                 navigateTo(OrderDetailsDestination(DataHolder.build(limeBookingInformation)))
             }else{

@@ -24,6 +24,7 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
+import kotlin.math.roundToInt
 
 internal class BillingDetailsViewModel(private val context: Context, private val arguments: Bundle): NavigationViewModel() {
     private val limeRepository: LimeRepository = LimeRepositoryImpl()
@@ -66,9 +67,10 @@ internal class BillingDetailsViewModel(private val context: Context, private val
                         noPerson = getPartRequestBody("0"),
                         userId = getPartRequestBody(LimeSharedRepositoryImpl(context).loggedInUser.user_id.toString()),
                         vehicleTypeId = getPartRequestBody(dataHolder?.vehicle?.type_id.toString()),
+                        pickUpDate = getPartRequestBody(dataHolder?.travelDate.orEmpty()),
+                        totalAmount = getPartRequestBody(((dataHolder?.vehicle?.per_km_price!!.toFloat() * dataHolder.distance).roundToInt()).toString()),
                         bill = getFilePart(bill,billUri,"consigner_bill"),
                         certificate = getFilePart(certificate,certificateUri,"coi")
-
                     )){
                     is ServiceResult.Success -> onSuccessOfVehicleTypes(serviceResult.data)
                     is ServiceResult.Error -> onFailure(serviceResult.exception)

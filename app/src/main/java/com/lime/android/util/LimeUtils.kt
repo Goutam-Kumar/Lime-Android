@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.view.animation.LinearInterpolator
 import android.widget.ImageView
 import android.widget.Toast
@@ -16,8 +17,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.lime.android.R
 import com.squareup.picasso.Picasso
+import okhttp3.Request
+import java.io.IOException
+import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 internal class LimeUtils {
 
@@ -83,6 +88,42 @@ internal class LimeUtils {
         fun getTodaysDate(): String{
             val sdf = SimpleDateFormat("dd-MM-yyyy")
             return sdf.format(Date())
+        }
+
+        fun stringifyRequestBody(request: Request): String{
+            if (request.body != null){
+                try {
+                    val copy = request.newBuilder().build()
+                    val buffer = okio.Buffer()
+                    copy.body!!.writeTo(buffer)
+                    return buffer.readUtf8().replace("\\","");
+                } catch (e: IOException) {
+                    Log.w(GLOBAL_TAG, "Failed to stringify request body: " + e.message)
+                }
+            }
+            return ""
+        }
+
+        fun shakeAnimation(context: Context, view: View){
+            val animation = AnimationUtils.loadAnimation(context, R.anim.shakeanimation)
+            view.animation = animation
+        }
+
+        @SuppressLint("SimpleDateFormat")
+        fun getFormattedDate(inputDate: String, inputFormat: String, outputFormat: String): String? {
+            var outputDate: String? = null
+            val inputDateFormat = SimpleDateFormat(inputFormat)
+            val outputDateFormat = SimpleDateFormat(outputFormat)
+            var sourceDate: Date? = null
+            try {
+                sourceDate = inputDateFormat.parse(inputDate)
+            } catch (exp: Exception) {
+                exp.printStackTrace()
+            }
+            sourceDate?.let {
+                outputDate = outputDateFormat.format(sourceDate)
+            }
+            return outputDate
         }
     }
 }

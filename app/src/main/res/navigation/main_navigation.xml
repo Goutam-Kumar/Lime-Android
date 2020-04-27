@@ -85,4 +85,9 @@
         android:name="com.lime.android.fragments.termsandconditions.TnCFragment"
         android:label="TnCFragment"
         tools:layout="@layout/fragment_tnc"/>
+    <fragment
+        android:id="@+id/orderHistoryFragment"
+        android:name="com.lime.android.fragments.orderhistory.OrderHistoryFragment"
+        android:label="OrderHistoryFragment"
+        tools:layout="@layout/fragment_order_history"/>
 </navigation>

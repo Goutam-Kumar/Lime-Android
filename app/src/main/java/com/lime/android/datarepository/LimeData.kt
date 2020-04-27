@@ -12,5 +12,6 @@ data class LimeBookingInformation(
     val pickUpAddress: String? = null,
     val dropAddress: String? = null,
     val vehicle: Vehicle? = null,
-    val distance: Float = 0.0f
+    val distance: Float = 0.0f,
+    val travelDate: String? = null
 ): LimeData()

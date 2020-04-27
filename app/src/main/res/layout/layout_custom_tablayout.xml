@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lime.android.ui.customview.robototextview.RobotoTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tv_tab_name"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:textColor="@color/black"
+    android:textSize="@dimen/dim_15_sp"
+    android:gravity="center"
+    android:textAllCaps="false"
+    app:tv_fontName="lato_bold.ttf"/>

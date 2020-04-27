@@ -3,6 +3,7 @@ package com.lime.android.fragments.home
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -18,6 +19,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -26,11 +28,12 @@ import com.google.android.libraries.places.widget.Autocomplete
 import com.google.android.libraries.places.widget.AutocompleteActivity
 import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.lime.android.R
 import com.lime.android.screens.dashboard.MainActivity
 import com.lime.android.ui.BaseFragment
+import com.lime.android.util.GLOBAL_TAG
 import com.lime.android.util.LimeUtils
-
 
 private const val AUTO_COMPLETE_REQ_CODE: Int = 2000
 private const val TAG: String = "AutoCompleteResult"
@@ -106,6 +109,9 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
             findViewById<Button>(R.id.btn_continue).apply {
                 setOnClickListener { viewModel.onContinueClicked() }
             }
+
+            findViewById<FloatingActionButton>(R.id.fab_current_location).setOnClickListener {
+            }
         }
     }
 
@@ -150,20 +156,27 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
                 }
             }
         }
-
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         mMap.apply {
-            val sydney = LatLng(13.2543, 34.3015)
-            mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Malawi"))
+            try{
+                mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(requireContext(),R.raw.lime_map_style))
+            }catch (e: Resources.NotFoundException){
+                Log.e(GLOBAL_TAG,"Raw resource not found!")
+            }
+            val sydney = LatLng(-13.254308, 34.301525)
+            mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+            mMap.isTrafficEnabled = true
+            mMap.addMarker(MarkerOptions().position(sydney).title("Malawi"))
+
             mMap.animateCamera(
                 CameraUpdateFactory.newLatLngZoom(
                     LatLng(
                         sydney.latitude,
                         sydney.longitude
-                    ), 22.0f
+                    ), 17.0f
                 )
             )
             uiSettings.apply {

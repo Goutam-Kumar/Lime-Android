@@ -2,6 +2,7 @@ package com.lime.android.screens.dashboard
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -20,9 +22,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 import com.lime.android.R
 import com.lime.android.fragments.aboutus.AboutUsFragment
 import com.lime.android.fragments.home.HomeFragment
+import com.lime.android.fragments.orderhistory.OrderHistoryFragment
 import com.lime.android.fragments.termsandconditions.TnCFragment
 import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
 import com.lime.android.util.GLOBAL_TAG
@@ -97,6 +101,7 @@ class MainActivity : AppCompatActivity() {
     private fun navigateToMenuFragment(position: Int) {
         when(position){
             0 -> if (checkCurrentFragment() !is HomeFragment) openFragment(R.id.mainFragment)
+            2 -> if (checkCurrentFragment() !is OrderHistoryFragment) openFragment(R.id.orderHistoryFragment)
             3 -> if (checkCurrentFragment() !is AboutUsFragment) openFragment(R.id.aboutUsFragment)
             4 -> if (checkCurrentFragment() !is TnCFragment) openFragment(R.id.tnCFragment)
             5 -> logout()
@@ -146,8 +151,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setBackButtonVisibility(visibility: Int){
-        findViewById<ImageView>(R.id.img_back).visibility = visibility
+    fun setBackButtonVisibility(visible: Int){
+        findViewById<ImageView>(R.id.img_back).apply {
+            visibility = visible
+            setOnClickListener { onBackPressed() }
+        }
     }
 
     fun setToolbarVisibiliy(visibility: Int){
@@ -159,5 +167,23 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
         val childFragments = navHostFragment?.childFragmentManager?.fragments
         childFragments?.forEach { it.onActivityResult(requestCode, resultCode, data) }
+    }
+
+    override fun onBackPressed() {
+        val fragcount: Int = supportFragmentManager.primaryNavigationFragment?.childFragmentManager?.backStackEntryCount ?: -1
+        if (fragcount == 0)
+            showCancelSnackBar()
+        else
+            super.onBackPressed()
+    }
+
+    private fun showCancelSnackBar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        val snack = Snackbar.make(toolbar,"Do you want to close the app?",Snackbar.LENGTH_LONG)
+        snack.setAction("Yes", View.OnClickListener {
+            finish()
+        })
+        snack.setActionTextColor(ContextCompat.getColor(this,R.color.white))
+        snack.show()
     }
 }

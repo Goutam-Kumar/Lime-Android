@@ -38,13 +38,23 @@
                 android:gravity="center"
                 app:tv_fontName="lato_bold.ttf"/>
         </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv_truck_list"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_truck_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
+            <com.lime.android.ui.customview.emptybox.EmptyBox
+                android:id="@+id/empty_box"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:emptyText="@string/no_vehicle_available"
+                android:layout_gravity="center"
+                android:visibility="gone"/>
+        </FrameLayout>
     </LinearLayout>
 
     <LinearLayout

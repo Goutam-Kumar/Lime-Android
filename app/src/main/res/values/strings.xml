@@ -107,4 +107,16 @@
     <string name="enter_address">Enter address.</string>
     <string name="enter_natid">Enter Natonal ID.</string>
     <string name="internal_storage">Internal storage</string>
+    <string name="no_vehicle_available">Sorry! No vehicle found in your location.</string>
+    <string name="select_date">Please select travel date.</string>
+    <string name="no_order">Sorry! You didn\'t place any order.</string>
+    <string name="in_progress">In Progress</string>
+    <string name="completed">Completed</string>
+    <string name="history_details">History Details</string>
+    <string name="reached_time">Reached Time</string>
+    <string name="price">Price: </string>
+    <string name="received">Received: </string>
+    <string name="truck">Truck: </string>
+    <string name="status">Status</string>
+    <string name="no_completed_order">You don\'t have any completed order!</string>
 </resources>

@@ -59,5 +59,7 @@ internal class OrderConfirmationDestination(dataHolder: DataHolder, bookingId: I
     }
 }
 
+internal class OrderHistoryDestination: NavigationDestination(R.id.orderHistoryFragment)
+
 internal fun getLimeDataHolder(arguments: Bundle) = arguments.getParcelable<DataHolder>(
     LIME_DATA_HOLDER)
