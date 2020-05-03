@@ -19,6 +19,8 @@ import com.lime.android.models.vehicles.Vehicle
 import com.lime.android.networkhelper.ServiceResult
 import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
 import com.lime.android.ui.navigationui.NavigationViewModel
+import com.lime.android.util.BOOKING_TYPE_BID
+import com.lime.android.util.BOOKING_TYPE_ORDER
 import kotlinx.coroutines.launch
 
 class TruckListViewModel(private val arguments: Bundle,private val context: Context): NavigationViewModel() {

@@ -43,7 +43,7 @@ class CurrentOrderFragment: BaseFragment() {
                             adapter = OrderListAdapter(
                                 {ride->
                                     //TODO do the adapter click event
-                                },requireContext(),it
+                                },requireContext(),it.reversed()
                             )
                         }
                     }

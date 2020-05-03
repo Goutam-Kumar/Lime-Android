@@ -18,6 +18,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,13 +27,17 @@ import com.google.android.material.snackbar.Snackbar
 import com.lime.android.R
 import com.lime.android.fragments.aboutus.AboutUsFragment
 import com.lime.android.fragments.home.HomeFragment
+import com.lime.android.fragments.orderconfirmation.OrderConfirmationFragment
 import com.lime.android.fragments.orderhistory.OrderHistoryFragment
 import com.lime.android.fragments.termsandconditions.TnCFragment
+import com.lime.android.screens.login.LoginActivity
+import com.lime.android.service.LIME_IMAGE_URL
 import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
+import com.lime.android.ui.BaseFragment
 import com.lime.android.util.GLOBAL_TAG
 import com.lime.android.util.LimeUtils
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
-
 
 class MainActivity : AppCompatActivity() {
     private val viewModel by lazy {
@@ -55,7 +60,7 @@ class MainActivity : AppCompatActivity() {
             val notificationManager = getSystemService(NotificationManager::class.java)
             notificationManager?.createNotificationChannel(
                 NotificationChannel(channelId,
-                channelName, NotificationManager.IMPORTANCE_LOW)
+                    channelName, NotificationManager.IMPORTANCE_LOW)
             )
         }
 
@@ -95,6 +100,20 @@ class MainActivity : AppCompatActivity() {
                     this@MainActivity
                 )
             }
+
+            LimeUtils.setImageUsingPicassoWithPlaceHolder(
+                this@MainActivity,
+                findViewById<ImageView>(R.id.img_user_image),
+                LIME_IMAGE_URL.plus(LimeSharedRepositoryImpl(this@MainActivity).loggedInUser.profile_pic),
+                R.drawable.ic_user_pic_icon)
+            findViewById<TextView>(R.id.tv_user_name).text = LimeSharedRepositoryImpl(this@MainActivity).loggedInUser.user_name
+            findViewById<ImageView>(R.id.img_back).setOnClickListener {
+                if (drawer.isDrawerOpen(GravityCompat.START)) {
+                    drawer.closeDrawer(GravityCompat.START)
+                }else{
+                    drawer.openDrawer(GravityCompat.START)
+                }
+            }
         }
     }
 
@@ -110,7 +129,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun logout() {
-        //TODO clear the login sharedPref
+        LimeSharedRepositoryImpl(this).cleanup()
+        startActivity(Intent(this,LoginActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     }
 
     private fun checkCurrentFragment(): Fragment?{
@@ -154,7 +174,6 @@ class MainActivity : AppCompatActivity() {
     fun setBackButtonVisibility(visible: Int){
         findViewById<ImageView>(R.id.img_back).apply {
             visibility = visible
-            setOnClickListener { onBackPressed() }
         }
     }
 
@@ -171,7 +190,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         val fragcount: Int = supportFragmentManager.primaryNavigationFragment?.childFragmentManager?.backStackEntryCount ?: -1
-        if (fragcount == 0)
+        var fragment: Fragment? = null
+        if (supportFragmentManager.primaryNavigationFragment?.childFragmentManager?.fragments.isNullOrEmpty()){
+            fragment= supportFragmentManager.primaryNavigationFragment?.childFragmentManager?.fragments?.get(fragcount)
+        }
+        if(fragment != null && fragment is OrderConfirmationFragment){
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
+            navHostFragment?.findNavController()?.navigate(R.id.action_orderConfirmationFragment_to_mainFragment)
+        }
+        else if (fragcount == 0)
             showCancelSnackBar()
         else
             super.onBackPressed()

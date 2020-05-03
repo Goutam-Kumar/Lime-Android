@@ -47,7 +47,26 @@ class AdditionalDetailsViewModel(private val arguments: Bundle, private val cont
     }
 
     fun onBidNowClicked() {
-        navigateTo(OfferBidDestination())
+        if (!TextUtils.isEmpty(travelDate)){
+            dataHolder?.let {
+                val newDataHolder = DataHolder(
+                    dropLat = dataHolder.dropLat,
+                    dropLng = dataHolder.dropLng,
+                    dropAddress = dataHolder.dropAddress,
+                    distance = dataHolder.distance,
+                    vehicle = dataHolder.vehicle,
+                    pickUpAddress = dataHolder.pickUpAddress,
+                    pickUpLng = dataHolder.pickUpLng,
+                    pickUpLat = dataHolder.pickUpLat,
+                    travelDate = travelDate,
+                    vehicleTypeId = dataHolder.vehicleTypeId
+                )
+                navigateTo(OfferBidDestination(vehicleId,distance,newDataHolder))
+            }
+        }else{
+            _serviceException.value = context.getString(R.string.select_date)
+        }
+
     }
 
     fun getVehicleAndGoods() {

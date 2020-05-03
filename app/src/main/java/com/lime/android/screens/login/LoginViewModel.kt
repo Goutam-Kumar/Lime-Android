@@ -2,6 +2,7 @@ package com.lime.android.screens.login
 
 import android.content.Context
 import android.text.TextUtils
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,7 @@ import com.lime.android.models.login.MODLoginRequest
 import com.lime.android.models.login.MODLoginResponse
 import com.lime.android.networkhelper.ServiceResult
 import com.lime.android.sharedrepository.LimeSharedRepositoryImpl
+import com.lime.android.util.GLOBAL_TAG
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val context: Context): ViewModel() {
@@ -71,7 +73,7 @@ class LoginViewModel(private val context: Context): ViewModel() {
         if (TextUtils.isEmpty(mobNum)){
             isValid = false
             _mobileError.value = context.getString(R.string.mobile_error)
-        }else if (mobNum.length >= 10){
+        }else if ((mobNum.length > 10) || (mobNum.take(1) == "0")){
             isValid = false
             _mobileError.value = context.getString(R.string.mobile_format_error)
         }

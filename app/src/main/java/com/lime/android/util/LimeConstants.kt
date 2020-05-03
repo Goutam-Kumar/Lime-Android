@@ -11,3 +11,6 @@ const val DISTANCE = "distance"
 const val BOOKING_ID = "booking_id"
 
 const val LIME_DATA_HOLDER = "lime_data_holder"
+const val BOOKING_TYPE_ORDER = "order"
+const val BOOKING_TYPE_BID = "bid"
+const val BOOKING_TYPE = "booking_type"

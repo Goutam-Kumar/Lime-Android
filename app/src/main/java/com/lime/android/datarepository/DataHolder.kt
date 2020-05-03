@@ -13,8 +13,10 @@ internal class DataHolder constructor(
     val pickUpAddress: String? = null,
     val dropAddress: String? = null,
     val vehicle: Vehicle? = null,
+    val vehicleTypeId: Int = 0,
     val distance: Float = 0.0f,
-    val travelDate: String? = null
+    val travelDate: String? = null,
+    val bidAmount: Double = 0.0
 ):Parcelable {
     companion object {
         fun build(rigsInformationData: LimeBookingInformation?) = Builder().initData(rigsInformationData).build()
@@ -35,8 +37,10 @@ internal class DataHolder constructor(
                 pickUpAddress = it.pickUpAddress
                 dropAddress = it.dropAddress
                 vehicle = it.vehicle
+                vehicleTypeId = it.vehicleTypeId
                 distance = it.distance
                 travelDate = it.travelDate
+                bidAmount = it.bidAmount
             }
         }
 
@@ -47,8 +51,10 @@ internal class DataHolder constructor(
         private var pickUpAddress: String? = null
         private var dropAddress: String? = null
         private var vehicle: Vehicle? = null
+        private var vehicleTypeId: Int = 0
         private var distance: Float = 0.0f
         private var travelDate: String? = null
+        private var bidAmount: Double = 0.0
 
         internal fun build() = DataHolder(
             pickUpLat,
@@ -58,8 +64,10 @@ internal class DataHolder constructor(
             pickUpAddress,
             dropAddress,
             vehicle,
+            vehicleTypeId,
             distance,
-            travelDate
+            travelDate,
+            bidAmount
         )
     }
 }

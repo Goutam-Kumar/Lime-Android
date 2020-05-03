@@ -8,6 +8,7 @@ import com.lime.android.BillingDetailsDestination
 import com.lime.android.datarepository.DataHolder
 import com.lime.android.getLimeDataHolder
 import com.lime.android.ui.navigationui.NavigationViewModel
+import com.lime.android.util.BOOKING_TYPE_ORDER
 
 internal class OrderDetailsViewModel(private val arguments: Bundle, private val context: Context): NavigationViewModel() {
     private val dataHolder: DataHolder? = getLimeDataHolder(arguments)
@@ -20,6 +21,6 @@ internal class OrderDetailsViewModel(private val arguments: Bundle, private val 
     }
 
     fun onContinueClick() {
-        navigateTo(BillingDetailsDestination(dataHolder!!))
+        navigateTo(BillingDetailsDestination(dataHolder!!, BOOKING_TYPE_ORDER))
     }
 }

@@ -54,7 +54,7 @@ interface LimeRepositoryServices {
                         @Part("source_long") pickupLng: RequestBody,
                         @Part("dest_lat") dropLat: RequestBody,
                         @Part("dest_long") dropLng: RequestBody,
-                        @Part("name") email: RequestBody,
+                        @Part("email") email: RequestBody,
                         @Part("contact_name") cName: RequestBody,
                         @Part("address") address: RequestBody,
                         @Part("national_id") natID: RequestBody,
@@ -64,6 +64,30 @@ interface LimeRepositoryServices {
                         @Part("total_amount") totalAmount: RequestBody,
                         @Part certificate: MultipartBody.Part?,
                         @Part bill: MultipartBody.Part?
+    ): Response<MODBookingResponse?>
+
+    @Multipart
+    @POST("bid-now")
+    suspend fun bidNow(@Header("Authorization")  auth:String,
+                       @Part("source_address")  pickup_address: RequestBody,
+                       @Part("dest_address") dropAddress: RequestBody,
+                       @Part("booking_type") bookingType: RequestBody,
+                       @Part("user_id") userId: RequestBody,
+                       @Part("fcm_id") fcmID: RequestBody,
+                       @Part("source_lat") pickupLat: RequestBody,
+                       @Part("source_long") pickupLng: RequestBody,
+                       @Part("dest_lat") dropLat: RequestBody,
+                       @Part("dest_long") dropLng: RequestBody,
+                       @Part("email") email: RequestBody,
+                       @Part("contact_name") cName: RequestBody,
+                       @Part("address") address: RequestBody,
+                       @Part("national_id") natID: RequestBody,
+                       @Part("no_of_persons") noPerson: RequestBody,
+                       @Part("vehicle_typeid") vehicleTypeId: RequestBody,
+                       @Part("pickup_date") pickUpDate: RequestBody,
+                       @Part("bid_amount") bidAmount: RequestBody,
+                       @Part certificate: MultipartBody.Part?,
+                       @Part bill: MultipartBody.Part?
     ): Response<MODBookingResponse?>
 
     @POST("ride-history")

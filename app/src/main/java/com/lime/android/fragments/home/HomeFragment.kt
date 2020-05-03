@@ -72,6 +72,7 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
                 view?.apply {
                     findViewById<RecyclerView>(R.id.rcv_vehicle_category).apply {
                         layoutManager = LinearLayoutManager(requireContext(),RecyclerView.HORIZONTAL,false)
+                        removeItemDecorator(this)
                         addItemDecoration(MarginItemDecoration(resources.getDimension(R.dimen.dim_10_dp).toInt()))
                         adapter = VehicleCategoryAdapter(
                             {position: Int, vehicleId: Int ->
@@ -81,6 +82,15 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
                     }
                 }
             })
+        }
+    }
+
+    private fun removeItemDecorator(recyclerView: RecyclerView?) {
+        recyclerView?.let {
+            var itemDecoration: RecyclerView.ItemDecoration? = null
+            while (recyclerView.itemDecorationCount > 0 && (recyclerView.getItemDecorationAt(0)?.let { itemDecoration = it }) != null) {
+                recyclerView.removeItemDecoration(itemDecoration!!)
+            }
         }
     }
 
@@ -166,17 +176,18 @@ class HomeFragment: BaseFragment(),OnMapReadyCallback {
             }catch (e: Resources.NotFoundException){
                 Log.e(GLOBAL_TAG,"Raw resource not found!")
             }
-            val sydney = LatLng(-13.254308, 34.301525)
+            val sydney = LatLng(-13.96692, 33.78725)
+            //val sydney = LatLng(12.9716, 77.5946)
             mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
             mMap.isTrafficEnabled = true
-            mMap.addMarker(MarkerOptions().position(sydney).title("Malawi"))
+            mMap.addMarker(MarkerOptions().position(sydney).title("Lilongwe, Malawi"))
 
             mMap.animateCamera(
                 CameraUpdateFactory.newLatLngZoom(
                     LatLng(
                         sydney.latitude,
                         sydney.longitude
-                    ), 17.0f
+                    ), 15.0f
                 )
             )
             uiSettings.apply {

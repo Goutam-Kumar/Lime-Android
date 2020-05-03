@@ -32,6 +32,10 @@ internal class LimeUtils {
             Picasso.with(context).load(url).placeholder(R.mipmap.ic_launcher).noFade().into(view);
         }
 
+        fun setImageUsingPicassoWithPlaceHolder(context: Context, view: ImageView, url: String, placeHolder: Int){
+            Picasso.with(context).load(url).placeholder(placeHolder).noFade().into(view);
+        }
+
         fun blinkAnimation(view: View){
             val animation = AlphaAnimation(0.7f,0.0f)
             animation.duration = 500

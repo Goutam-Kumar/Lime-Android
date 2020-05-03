@@ -41,8 +41,8 @@
         android:label="OfferBidFragment"
         tools:layout="@layout/fragment_offer_bid">
         <action
-            android:id="@+id/action_offerBidFragment_to_fragmentBidConfirmation"
-            app:destination="@id/fragmentBidConfirmation" />
+            android:id="@+id/action_offerBidFragment_to_billingDetailsFragment"
+            app:destination="@id/billingDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/fragmentBidConfirmation"
@@ -69,12 +69,25 @@
             app:popUpTo="@id/mainFragment"
             app:popUpToInclusive="true"
             app:launchSingleTop="true"/>
+        <action
+            android:id="@+id/action_billingDetailsFragment_to_fragmentBidConfirmation"
+            app:destination="@id/fragmentBidConfirmation"
+            app:popUpTo="@id/mainFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"/>
     </fragment>
     <fragment
         android:id="@+id/orderConfirmationFragment"
         android:name="com.lime.android.fragments.orderconfirmation.OrderConfirmationFragment"
         android:label="OrderConfirmationFragment"
-        tools:layout="@layout/fragment_order_confirmation"/>
+        tools:layout="@layout/fragment_order_confirmation">
+        <action
+            android:id="@+id/action_orderConfirmationFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/orderConfirmationFragment"
+            app:popUpToInclusive="true"
+            app:launchSingleTop="true"/>
+    </fragment>
     <fragment
         android:id="@+id/aboutUsFragment"
         android:name="com.lime.android.fragments.aboutus.AboutUsFragment"

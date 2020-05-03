@@ -32,6 +32,56 @@ internal class LimeRepositoryImpl(
     private val rigsItService: LimeRepositoryServices = LimeRepositoryRetrofit().prepareService()
 ): LimeRepository {
 
+    override suspend fun bidNow(
+        auth: String,
+        dropAddress: RequestBody,
+        dropLng: RequestBody,
+        dropLat: RequestBody,
+        pickup_address: RequestBody,
+        pickupLat: RequestBody,
+        pickupLng: RequestBody,
+        address: RequestBody,
+        bookingType: RequestBody,
+        cName: RequestBody,
+        email: RequestBody,
+        fcmID: RequestBody,
+        natID: RequestBody,
+        noPerson: RequestBody,
+        userId: RequestBody,
+        vehicleTypeId: RequestBody,
+        pickUpDate: RequestBody,
+        bidAmount: RequestBody,
+        bill: MultipartBody.Part?,
+        certificate: MultipartBody.Part?
+    ): ServiceResult<MODBookingResponse?> {
+        return withContext(ioDispatcher) {
+            RetrofitCallbackHandler.processCall {
+                rigsItService.bidNow(
+                    auth,
+                    pickup_address,
+                    dropAddress,
+                    bookingType,
+                    userId,
+                    fcmID,
+                    pickupLat,
+                    pickupLng,
+                    dropLat,
+                    dropLng,
+                    email,
+                    cName,
+                    address,
+                    natID,
+                    noPerson,
+                    vehicleTypeId,
+                    pickUpDate,
+                    bidAmount,
+                    certificate,
+                    bill
+                )
+            }
+        }
+    }
+
     override suspend fun getCurrentOrder(
         custId: MODCurrentOrderRequest,
         apiToken: String

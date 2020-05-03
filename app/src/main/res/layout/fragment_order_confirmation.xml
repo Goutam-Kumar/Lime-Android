@@ -280,4 +280,6 @@
             android:paddingRight="@dimen/spacing_10_dp"
             app:tv_fontName="lato_Bold.ttf"/>
     </RelativeLayout>
+
+
 </LinearLayout>

@@ -41,27 +41,32 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/spacing_10_dp"
                 android:gravity="center"
+                android:background="@color/white"
                 android:orientation="horizontal">
                 <com.lime.android.ui.customview.robototextview.RobotoTextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="@string/mw"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/dim_25_sp"
                     android:layout_gravity="center_horizontal"
                     app:tv_fontName="lato_bold.ttf"/>
+
                 <com.lime.android.ui.customview.robotoedittext.RobotoEditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/spacing_10_dp"
-                    android:text="1000.00"
+                    android:id="@+id/et_price_box"
+                    android:layout_width="@dimen/dim_100_dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/spacing_10_dp"
+                    android:layout_marginRight="@dimen/dim_20_dp"
+                    android:background="@color/white"
+                    android:inputType="numberDecimal"
                     android:maxLines="1"
-                    android:inputType="number"
+                    android:hint="0.00"
+                    android:textColorHint="@color/black"
                     android:textColor="@color/black"
                     android:textSize="@dimen/dim_25_sp"
-                    android:layout_gravity="center_horizontal"
-                    android:background="@color/white"
-                    app:tv_fontName="lato_thin.ttf"/>
+                    app:tv_fontName="lato_thin.ttf" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <com.lime.android.ui.customview.robototextview.RobotoTextView

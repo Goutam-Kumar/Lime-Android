@@ -96,7 +96,7 @@ class RegisterViewModel(private val context: Context): ViewModel() {
                 isValid = false
                 _phoneError.value = context.getString(R.string.mobile_error)
             }
-            phone.length >= 10 -> {
+            ((phone.length > 10) || (phone.take(1) == "0"))-> {
                 isValid = false
                 _phoneError.value = context.getString(R.string.mobile_format_error)
             }

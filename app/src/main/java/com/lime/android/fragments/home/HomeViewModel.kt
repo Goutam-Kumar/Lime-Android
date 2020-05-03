@@ -61,7 +61,8 @@ class HomeViewModel(private val context: Context): NavigationViewModel() {
                 dropLng = dropLng,
                 pickUpAddress = pickUpAddress,
                 dropAddress = dropAddress,
-                distance = distance
+                distance = distance,
+                vehicleTypeId = selectedVehicleId
             )
             val dataHolder = DataHolder.build(limeBookingInformation)
             navigateTo(AdditionalDetailsDestination(selectedVehicleId,distance, dataHolder))

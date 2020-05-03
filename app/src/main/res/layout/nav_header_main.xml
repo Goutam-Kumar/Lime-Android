@@ -11,14 +11,14 @@
         android:id="@+id/img_user_image"
         android:layout_width="@dimen/dim_50_dp"
         android:layout_height="@dimen/dim_50_dp"
-        android:src="@drawable/ic_user_pic_icon"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true" />
 
     <com.lime.android.ui.customview.robototextview.RobotoTextView
+        android:id="@+id/tv_user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/img_user_image"
-        android:text="John Vandella"
+        android:text=""
         android:textColor="@color/black"
         android:textSize="@dimen/dim_15_sp"
         android:layout_marginStart="@dimen/spacing_5_dp"

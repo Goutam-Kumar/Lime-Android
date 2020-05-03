@@ -30,21 +30,35 @@ internal class AdditionalDetailsDestination(vehicleId: Int, distance: Float, dat
             }
     }
 }
-internal class OfferBidDestination: NavigationDestination(R.id.offerBidFragment)
-internal class BidConfirmationDestination: NavigationDestination(R.id.fragmentBidConfirmation)
+internal class OfferBidDestination(vehicleId: Int, distance: Float, dataHolder: DataHolder):
+    NavigationDestination(R.id.offerBidFragment, getArgument(vehicleId,distance, dataHolder)){
+    companion object{
+        internal fun getVehicleId(arguments: Bundle) = arguments.getInt(VEHICLE_ID,0)
+        internal fun getDistance(arguments: Bundle) = arguments.getFloat(DISTANCE,0.0f)
+        internal fun getArgument(vehicleId: Int, distance: Float, dataHolder: DataHolder) = NavigationArguments.create{
+            putInt(VEHICLE_ID,vehicleId)
+            putFloat(DISTANCE, distance)
+            putParcelable(LIME_DATA_HOLDER, dataHolder)
+        }
+    }
+}
+internal class BidConfirmationDestination: NavigationDestination(R.id.action_billingDetailsFragment_to_fragmentBidConfirmation)
 internal class OrderDetailsDestination(dataHolder: DataHolder)
     : NavigationDestination(R.id.orderDetailsFragment, getArguments(dataHolder)){
     companion object{
         internal fun getArguments(dataHolder: DataHolder) = NavigationArguments.create{
-                putParcelable(LIME_DATA_HOLDER, dataHolder)
+            putParcelable(LIME_DATA_HOLDER, dataHolder)
+
         }
     }
 }
-internal class BillingDetailsDestination(dataHolder: DataHolder)
-    : NavigationDestination(R.id.billingDetailsFragment, getArguments(dataHolder)){
+internal class BillingDetailsDestination(dataHolder: DataHolder, bookingType: String)
+    : NavigationDestination(R.id.billingDetailsFragment, getArguments(dataHolder,bookingType)){
     companion object{
-        internal fun getArguments(dataHolder: DataHolder) = NavigationArguments.create{
+        internal fun getBookingType(arguments: Bundle) = arguments.getString(BOOKING_TYPE).orEmpty()
+        internal fun getArguments(dataHolder: DataHolder, bookingType: String) = NavigationArguments.create{
             putParcelable(LIME_DATA_HOLDER, dataHolder)
+            putString(BOOKING_TYPE, bookingType)
         }
     }
 }
